@@ -63,7 +63,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Дуб камя'ний.png"
+        image: "Дуб кам'яний.png"
     },
     {
         id: "SQ-FPL-007",
@@ -206,7 +206,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Дуб камя'ний.png"
+        image: "Дуб кам'яний.png"
     },
     {
         id: "ST-FPL-007",
