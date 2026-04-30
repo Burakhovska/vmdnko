@@ -60,13 +60,15 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all cards and sections
-document.querySelectorAll('.card, .section-title').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+// Observe all cards and sections (skip catalog page to avoid conflicts with dynamic products)
+if (!window.location.pathname.includes('catalog.html')) {
+    document.querySelectorAll('.card, .section-title').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
 
 // Form validation (for contacts page)
 const contactForm = document.querySelector('.contact-form');
