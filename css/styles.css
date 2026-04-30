@@ -289,6 +289,8 @@ button {
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
     border: 1px solid rgba(201, 169, 98, 0.1);
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .card:hover {
