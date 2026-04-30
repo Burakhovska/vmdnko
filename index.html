@@ -125,39 +125,8 @@
         <section class="section popular">
             <div class="container">
                 <h2 class="section-title">Популярні Товари</h2>
-                <div class="grid grid-4">
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-1"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Геометрія"</h3>
-                        <p class="product-category">Настінні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-2"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Модерн"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-3"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Лінії"</h3>
-                        <p class="product-category">Настінні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-4"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Класик"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
+                <div class="grid grid-4" id="popular-products-grid">
+                    <!-- Products will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -239,6 +208,53 @@
         </div>
     </footer>
 
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popularGrid = document.getElementById('popular-products-grid');
+            
+            if (typeof products !== 'undefined' && products.length > 0 && popularGrid) {
+                // Get first 4 products as popular
+                const popularProducts = products.slice(0, 4);
+                
+                popularProducts.forEach(product => {
+                    const imageUrl = product.image ? `images/${product.image}` : null;
+                    const productCard = document.createElement('div');
+                    productCard.className = 'card product-card';
+                    productCard.style.opacity = '1';
+                    productCard.style.transform = 'translateY(0)';
+                    
+                    if (imageUrl) {
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <img src="${imageUrl}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div style="display: none; align-items: center; justify-content: center; height: 100%; color: var(--color-text-muted);">
+                                    <span>Немає фото</span>
+                                </div>
+                            </div>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-category">${product.category}</p>
+                            <p class="product-price">${product.price} грн</p>
+                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                        `;
+                    } else {
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--color-text-muted);">
+                                    <span>Немає фото</span>
+                                </div>
+                            </div>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-category">${product.category}</p>
+                            <p class="product-price">${product.price} грн</p>
+                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                        `;
+                    }
+                    popularGrid.appendChild(productCard);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
