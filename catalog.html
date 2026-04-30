@@ -140,57 +140,69 @@
     <script src="js/products.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Render products dynamically
-        const productsGrid = document.querySelector('.products-section .grid');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        
-        function renderProducts(productsToShow) {
-            productsGrid.innerHTML = '';
-            productsToShow.forEach(product => {
-                const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
-                const productCard = document.createElement('div');
-                productCard.className = 'card product-card';
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${imageUrl}" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
-                    </div>
-                    <h3 class="product-title">${product.name}</h3>
-                    <p class="product-category">${product.category}</p>
-                    <p class="product-price">${product.price} грн</p>
-                    <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
-                `;
-                productsGrid.appendChild(productCard);
-            });
-        }
-        
-        // Initialize with all products
-        renderProducts(products);
-        
-        // Update filter buttons with actual categories
-        const categories = getAllCategories();
-        const categoryFilterGroup = document.querySelector('.filter-group:first-of-type .filter-buttons');
-        categoryFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all">Всі</button>';
-        categories.forEach(category => {
-            const btn = document.createElement('button');
-            btn.className = 'filter-btn';
-            btn.setAttribute('data-filter', category);
-            btn.textContent = category;
-            categoryFilterGroup.appendChild(btn);
-        });
-        
-        // Filter functionality
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render products dynamically
+            const productsGrid = document.getElementById('products-grid');
+            
+            function renderProducts(productsToShow) {
+                if (!productsGrid) return;
+                productsGrid.innerHTML = '';
+                productsToShow.forEach(product => {
+                    const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
+                    const productCard = document.createElement('div');
+                    productCard.className = 'card product-card';
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${imageUrl}" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
+                        </div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-category">${product.category}</p>
+                        <p class="product-price">${product.price} грн</p>
+                        <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                    `;
+                    productsGrid.appendChild(productCard);
+                });
+            }
+            
+            // Initialize with all products
+            if (typeof products !== 'undefined' && products.length > 0) {
+                renderProducts(products);
                 
-                const filter = btn.getAttribute('data-filter');
-                if (filter === 'all') {
-                    renderProducts(products);
-                } else {
-                    renderProducts(getProductsByCategory(filter));
+                // Update filter buttons with actual categories
+                const categories = getAllCategories();
+                const categoryFilterGroup = document.querySelector('.filter-group:first-of-type .filter-buttons');
+                if (categoryFilterGroup) {
+                    categoryFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all">Всі</button>';
+                    categories.forEach(category => {
+                        const btn = document.createElement('button');
+                        btn.className = 'filter-btn';
+                        btn.setAttribute('data-filter', category);
+                        btn.textContent = category;
+                        categoryFilterGroup.appendChild(btn);
+                    });
                 }
-            });
+                
+                // Filter functionality
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                filterButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        const filter = btn.getAttribute('data-filter');
+                        if (filter === 'all') {
+                            renderProducts(products);
+                        } else {
+                            renderProducts(getProductsByCategory(filter));
+                        }
+                    });
+                });
+            } else {
+                console.error('Products data not loaded');
+                if (productsGrid) {
+                    productsGrid.innerHTML = '<p>Товари не завантажено</p>';
+                }
+            }
         });
     </script>
 </body>
