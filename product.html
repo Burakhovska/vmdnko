@@ -43,8 +43,8 @@
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
-                <h1 class="page-title">Панель "Квадрат"</h1>
-                <p class="page-subtitle">Акустичні панелі</p>
+                <h1 class="page-title" id="product-title">Завантаження...</h1>
+                <p class="page-subtitle" id="product-category">...</p>
             </div>
         </section>
 
@@ -55,54 +55,33 @@
                     <!-- Gallery -->
                     <div class="product-gallery">
                         <div class="main-image-container">
-                            <div class="main-image product-bg-1"></div>
-                        </div>
-                        <div class="gallery-thumbs">
-                            <div class="gallery-thumb active" data-image="">
-                                <div class="product-bg-1"></div>
-                            </div>
-                            <div class="gallery-thumb" data-image="">
-                                <div class="product-bg-2"></div>
-                            </div>
-                            <div class="gallery-thumb" data-image="">
-                                <div class="product-bg-3"></div>
-                            </div>
-                            <div class="gallery-thumb" data-image="">
-                                <div class="product-bg-4"></div>
-                            </div>
+                            <img id="main-image" src="images/placeholder.jpg" alt="Product Image" class="main-image" onerror="this.src='images/placeholder.jpg'">
                         </div>
                     </div>
 
                     <!-- Product Info -->
                     <div class="product-info">
                         <h2 class="product-info-title">Опис</h2>
-                        <p class="product-description">Акустична панель "Квадрат" створює геометричний, строгий ритм в інтер'єрі. Це поєднання сучасного дизайну та функціональності: панель не лише прикрашає приміщення, а й значно покращує акустику, зменшуючи відлуння та поглинаючи шум. Ідеально підходить для вітальні, спальні, робочого кабінету, студій звукозапису, салонів краси та комерційних приміщень.</p>
+                        <p class="product-description" id="product-description">Завантаження...</p>
+                        <p class="product-price" id="product-price">0 грн</p>
                         
                         <h3 class="product-specs-title">Характеристики</h3>
                         <ul class="product-specs">
                             <li>
-                                <span class="spec-label">Матеріал:</span>
-                                <span class="spec-value">MDF з покриттям</span>
-                            </li>
-                            <li>
-                                <span class="spec-label">Розмір:</span>
-                                <span class="spec-value">1200 x 600 мм</span>
-                            </li>
-                            <li>
-                                <span class="spec-label">Товщина:</span>
-                                <span class="spec-value">12 мм</span>
+                                <span class="spec-label">Артикул:</span>
+                                <span class="spec-value" id="product-id">-</span>
                             </li>
                             <li>
                                 <span class="spec-label">Колір:</span>
-                                <span class="spec-value">Дуб / Рустік / Однотонні декори</span>
+                                <span class="spec-value" id="product-color">-</span>
                             </li>
                             <li>
-                                <span class="spec-label">Монтаж:</span>
-                                <span class="spec-value">На клей / кріплення</span>
+                                <span class="spec-label">Розмір:</span>
+                                <span class="spec-value" id="product-size">-</span>
                             </li>
                             <li>
-                                <span class="spec-label">Вага:</span>
-                                <span class="spec-value">4.5 кг</span>
+                                <span class="spec-label">Покриття:</span>
+                                <span class="spec-value" id="product-coating">-</span>
                             </li>
                         </ul>
 
@@ -116,39 +95,8 @@
         <section class="section similar-products">
             <div class="container">
                 <h2 class="section-title">Схожі Товари</h2>
-                <div class="grid grid-4">
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-2"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Смуги"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-3"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Рустік"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-4"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Дуб"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-1"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Ультрамат"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
+                <div class="grid grid-4" id="similar-products-grid">
+                    <!-- Similar products will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -208,6 +156,61 @@
         </div>
     </footer>
 
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        if (productId) {
+            const product = getProductById(productId);
+            if (product) {
+                // Update page title
+                document.title = `${product.name} - VMDNKO`;
+                
+                // Update page header
+                document.getElementById('product-title').textContent = product.name;
+                document.getElementById('product-category').textContent = product.category;
+                
+                // Update main image
+                const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
+                document.getElementById('main-image').src = imageUrl;
+                
+                // Update product info
+                document.getElementById('product-description').textContent = product.description || 'Опис відсутній';
+                document.getElementById('product-price').textContent = `${product.price} грн`;
+                document.getElementById('product-id').textContent = product.id;
+                document.getElementById('product-color').textContent = product.color;
+                document.getElementById('product-size').textContent = product.size;
+                document.getElementById('product-coating').textContent = product.coating;
+                
+                // Load similar products (same category, excluding current product)
+                const similarProducts = products.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
+                const similarGrid = document.getElementById('similar-products-grid');
+                similarProducts.forEach(similarProduct => {
+                    const similarImageUrl = similarProduct.image ? `images/${similarProduct.image}` : 'images/placeholder.jpg';
+                    const card = document.createElement('div');
+                    card.className = 'card product-card';
+                    card.innerHTML = `
+                        <div class="product-image">
+                            <img src="${similarImageUrl}" alt="${similarProduct.name}" onerror="this.src='images/placeholder.jpg'">
+                        </div>
+                        <h3 class="product-title">${similarProduct.name}</h3>
+                        <p class="product-category">${similarProduct.category}</p>
+                        <p class="product-price">${similarProduct.price} грн</p>
+                        <a href="product.html?id=${similarProduct.id}" class="btn btn-outline">Детальніше</a>
+                    `;
+                    similarGrid.appendChild(card);
+                });
+            } else {
+                document.getElementById('product-title').textContent = 'Товар не знайдено';
+                document.getElementById('product-category').textContent = '';
+            }
+        } else {
+            document.getElementById('product-title').textContent = 'Товар не вказано';
+            document.getElementById('product-category').textContent = '';
+        }
+    </script>
 </body>
 </html>

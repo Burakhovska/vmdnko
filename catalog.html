@@ -56,24 +56,6 @@
                         <h3 class="filter-title">Категорія</h3>
                         <div class="filter-buttons">
                             <button class="filter-btn active" data-filter="all">Всі</button>
-                            <button class="filter-btn" data-filter="panels">Акустичні панелі</button>
-                            <button class="filter-btn" data-filter="doors">Двері</button>
-                        </div>
-                    </div>
-                    <div class="filter-group">
-                        <h3 class="filter-title">Матеріал</h3>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" data-filter="wood">Дерево</button>
-                            <button class="filter-btn" data-filter="mdf">MDF</button>
-                            <button class="filter-btn" data-filter="metal">Метал</button>
-                        </div>
-                    </div>
-                    <div class="filter-group">
-                        <h3 class="filter-title">Колір</h3>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" data-filter="dark">Темний</button>
-                            <button class="filter-btn" data-filter="light">Світлий</button>
-                            <button class="filter-btn" data-filter="gold">Золотий</button>
                         </div>
                     </div>
                 </div>
@@ -83,71 +65,8 @@
         <!-- Products Grid -->
         <section class="section products-section">
             <div class="container">
-                <div class="grid grid-4">
-                    <div class="card product-card" data-category="panels">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-1"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Квадрат"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="doors">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-2"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Модерн"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="panels">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-3"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Смуги"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="doors">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-4"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Класик"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="panels">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-1"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Рустік"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="doors">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-2"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Преміум"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="panels">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-3"></div>
-                        </div>
-                        <h3 class="product-title">Панель "Дуб"</h3>
-                        <p class="product-category">Акустичні панелі</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
-                    <div class="card product-card" data-category="doors">
-                        <div class="product-image">
-                            <div class="product-bg product-bg-4"></div>
-                        </div>
-                        <h3 class="product-title">Двері "Елеганс"</h3>
-                        <p class="product-category">Двері</p>
-                        <a href="product.html" class="btn btn-outline">Детальніше</a>
-                    </div>
+                <div class="grid grid-4" id="products-grid">
+                    <!-- Products will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -218,6 +137,61 @@
         </div>
     </footer>
 
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Render products dynamically
+        const productsGrid = document.querySelector('.products-section .grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function renderProducts(productsToShow) {
+            productsGrid.innerHTML = '';
+            productsToShow.forEach(product => {
+                const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
+                const productCard = document.createElement('div');
+                productCard.className = 'card product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${imageUrl}" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-category">${product.category}</p>
+                    <p class="product-price">${product.price} грн</p>
+                    <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+        }
+        
+        // Initialize with all products
+        renderProducts(products);
+        
+        // Update filter buttons with actual categories
+        const categories = getAllCategories();
+        const categoryFilterGroup = document.querySelector('.filter-group:first-of-type .filter-buttons');
+        categoryFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all">Всі</button>';
+        categories.forEach(category => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.setAttribute('data-filter', category);
+            btn.textContent = category;
+            categoryFilterGroup.appendChild(btn);
+        });
+        
+        // Filter functionality
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                if (filter === 'all') {
+                    renderProducts(products);
+                } else {
+                    renderProducts(getProductsByCategory(filter));
+                }
+            });
+        });
+    </script>
 </body>
 </html>
