@@ -148,20 +148,35 @@
                 if (!productsGrid) return;
                 productsGrid.innerHTML = '';
                 productsToShow.forEach(product => {
-                    const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
+                    const imageUrl = product.image ? `images/${product.image}` : null;
                     const productCard = document.createElement('div');
                     productCard.className = 'card product-card';
                     productCard.style.opacity = '1';
                     productCard.style.transform = 'translateY(0)';
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${imageUrl}" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
-                        </div>
-                        <h3 class="product-title">${product.name}</h3>
-                        <p class="product-category">${product.category}</p>
-                        <p class="product-price">${product.price} грн</p>
-                        <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
-                    `;
+                    
+                    if (imageUrl) {
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <img src="${imageUrl}" alt="${product.name}" loading="lazy">
+                            </div>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-category">${product.category}</p>
+                            <p class="product-price">${product.price} грн</p>
+                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                        `;
+                    } else {
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--color-text-muted);">
+                                    <span>Немає фото</span>
+                                </div>
+                            </div>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-category">${product.category}</p>
+                            <p class="product-price">${product.price} грн</p>
+                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                        `;
+                    }
                     productsGrid.appendChild(productCard);
                 });
             }
