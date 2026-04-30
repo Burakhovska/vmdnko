@@ -326,8 +326,8 @@ const products = [
         color: "ДУБ СОНОМА",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соті",
-        image: ""
+        category: "Соти",
+        image: "Дуб сонома.png"
     },
     {
         id: "HEX-SRU-002",
@@ -337,8 +337,8 @@ const products = [
         color: "КЛЕН",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соті",
-        image: ""
+        category: "Соти",
+        image: "Клен.png"
     },
     {
         id: "HEX-DAN-003",
@@ -348,8 +348,8 @@ const products = [
         color: "ДУБ КРАФТ ЗОЛОТИЙ",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соті",
-        image: ""
+        category: "Соти",
+        image: "Дуб крафт золотий.jpg"
     },
     {
         id: "HEX-DVT-004",
@@ -359,8 +359,8 @@ const products = [
         color: "БЕЖ",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соті",
-        image: ""
+        category: "Соти",
+        image: "Беж.png"
     },
     {
         id: "HEX-KSH-005",
