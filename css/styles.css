@@ -555,6 +555,21 @@ button {
     text-align: center;
 }
 
+.catalog-header {
+    background: url('../images/hero-catalog.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.catalog-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.7), rgba(26, 26, 26, 0.8));
+}
+
 .page-title {
     font-family: var(--font-primary);
     font-size: clamp(36px, 5vw, 48px);
@@ -566,6 +581,11 @@ button {
 .page-subtitle {
     font-size: 18px;
     color: var(--color-text-muted);
+}
+
+.catalog-header .container {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== Filters Section ===== */
