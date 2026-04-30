@@ -8,7 +8,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Титан софттач.png"
+        image: "titan_softtouch.png"
     },
     {
         id: "SQ-SRU-002",
@@ -19,7 +19,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "сірий ум.png"
+        image: "siryi_um.png"
     },
     {
         id: "SQ-DAN-003",
@@ -30,7 +30,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Дуб антік.png"
+        image: "dub_antik.png"
     },
     {
         id: "SQ-DVT-004",
@@ -41,7 +41,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Дуб Вотан.png"
+        image: "dub_votan.png"
     },
     {
         id: "SQ-KSH-005",
@@ -52,7 +52,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Кашемір.png"
+        image: "kashemir.png"
     },
     {
         id: "SQ-DKM-006",
@@ -63,7 +63,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Дуб кам'яний.png"
+        image: "dub_kamyanyy.png"
     },
     {
         id: "SQ-FPL-007",
@@ -74,7 +74,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Фанера палена.png"
+        image: "fanera_palena.png"
     },
     {
         id: "SQ-BUM-008",
@@ -85,7 +85,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Білий ультрамат.png"
+        image: "bilyy_ultramat.png"
     },
     {
         id: "SQ-DBL-009",
@@ -96,7 +96,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Дуб болтон.png"
+        image: "dub_bolton.png"
     },
     {
         id: "SQ-RBL-010",
@@ -107,7 +107,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Рустік блан.png"
+        image: "rustik_blan.png"
     },
     {
         id: "SQ-RZT-011",
@@ -118,7 +118,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Рустік золотий.png"
+        image: "rustik_zolotyy.png"
     },
     {
         id: "SQ-RAV-012",
@@ -129,7 +129,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Рустік авіньон.png"
+        image: "rustik_avignon.png"
     },
     {
         id: "SQ-YKP-013",
@@ -140,7 +140,7 @@ const products = [
         size: "602 х 602 х 17",
         coating: "ПВХ",
         category: "Квадрат",
-        image: "Ялина карпатська.png"
+        image: "yalyna_karpatska.png"
     },
     {
         id: "ST-TST-001",
@@ -151,7 +151,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Титан софттач.png"
+        image: "titan_softtouch.png"
     },
     {
         id: "ST-SRU-002",
@@ -162,7 +162,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "сірий ум.png"
+        image: "siryi_um.png"
     },
     {
         id: "ST-DAN-003",
@@ -173,7 +173,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Дуб антік.png"
+        image: "dub_antik.png"
     },
     {
         id: "ST-DVT-004",
@@ -184,7 +184,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Дуб Вотан.png"
+        image: "dub_votan.png"
     },
     {
         id: "ST-KSH-005",
@@ -195,7 +195,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Кашемір.png"
+        image: "kashemir.png"
     },
     {
         id: "ST-DKM-006",
@@ -206,7 +206,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Дуб кам'яний.png"
+        image: "dub_kamyanyy.png"
     },
     {
         id: "ST-FPL-007",
@@ -217,7 +217,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Фанера палена.png"
+        image: "fanera_palena.png"
     },
     {
         id: "ST-BUM-008",
@@ -228,7 +228,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Білий ультрамат.png"
+        image: "bilyy_ultramat.png"
     },
     {
         id: "ST-DBL-009",
@@ -239,7 +239,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Дуб болтон.png"
+        image: "dub_bolton.png"
     },
     {
         id: "ST-RBL-010",
@@ -250,7 +250,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Рустік блан.png"
+        image: "rustik_blan.png"
     },
     {
         id: "ST-RZT-011",
@@ -261,7 +261,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Рустік золотий.png"
+        image: "rustik_zolotyy.png"
     },
     {
         id: "ST-RAV-012",
@@ -272,7 +272,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Рустік авіньон.png"
+        image: "rustik_avignon.png"
     },
     {
         id: "ST-YKP-013",
@@ -283,7 +283,7 @@ const products = [
         size: "301 х 2780 х 17",
         coating: "ПВХ",
         category: "Смуги",
-        image: "Ялина карпатська.png"
+        image: "yalyna_karpatska.png"
     },
     {
         id: "MDF-TST-001",
@@ -327,7 +327,7 @@ const products = [
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
         category: "Соти",
-        image: "Дуб сонома.png"
+        image: "dub_sonoma.png"
     },
     {
         id: "HEX-SRU-002",
@@ -338,7 +338,7 @@ const products = [
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
         category: "Соти",
-        image: "Клен.png"
+        image: "klen.png"
     },
     {
         id: "HEX-DAN-003",
@@ -349,7 +349,7 @@ const products = [
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
         category: "Соти",
-        image: "Дуб крафт золотий.jpg"
+        image: "dub_kraft_zolotyy.jpg"
     },
     {
         id: "HEX-DVT-004",
@@ -360,7 +360,7 @@ const products = [
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
         category: "Соти",
-        image: "Беж.png"
+        image: "bezh.png"
     },
     {
         id: "HEX-KSH-005",
