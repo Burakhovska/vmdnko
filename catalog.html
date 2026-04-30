@@ -151,6 +151,8 @@
                     const imageUrl = product.image ? `images/${product.image}` : 'images/placeholder.jpg';
                     const productCard = document.createElement('div');
                     productCard.className = 'card product-card';
+                    productCard.style.opacity = '1';
+                    productCard.style.transform = 'translateY(0)';
                     productCard.innerHTML = `
                         <div class="product-image">
                             <img src="${imageUrl}" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
