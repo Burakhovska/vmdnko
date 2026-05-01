@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Кошик замовлення VMDNKO. Оформіть замовлення на акустичні стінові панелі та двері.">
+    <meta name="keywords" content="кошик, замовлення, оформити, VMDNKO">
+    <title>Кошик - VMDNKO</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <svg width="150" height="50" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="35" font-family="Montserrat" font-weight="700" font-size="28" fill="#C9A962">VMDNKO</text>
+                        <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
+                    </svg>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                    <li><a href="about.html" class="nav-link">Про нас</a></li>
+                    <li><a href="contacts.html" class="nav-link">Контакти</a></li>
+                    <li><a href="cart.html" class="nav-link cart-link active">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Кошик</h1>
+                <p class="page-subtitle">Оформіть ваше замовлення</p>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section class="section">
+            <div class="container">
+                <div class="cart-layout">
+                    <div class="cart-items" id="cart-items">
+                        <!-- Cart items will be loaded dynamically -->
+                    </div>
+                    <div class="cart-summary">
+                        <h2 class="summary-title">Підсумок замовлення</h2>
+                        <div class="summary-row">
+                            <span>Товарів:</span>
+                            <span id="total-items">0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Всього:</span>
+                            <span id="total-price">0 грн</span>
+                        </div>
+                        <a href="catalog.html" class="btn btn-outline" style="width: 100%; margin-bottom: var(--spacing-sm);">Продовжити покупки</a>
+                        <button class="btn btn-primary" id="checkout-btn" style="width: 100%;">Оформити замовлення</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Form Section -->
+        <section class="section" id="order-form-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Оформлення замовлення</h2>
+                <form class="contact-form" id="order-form">
+                    <div class="form-group">
+                        <label for="name">Ім'я *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адреса доставки *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Коментар до замовлення</label>
+                        <textarea id="comment" name="comment" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Підтвердити замовлення</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="120" height="40" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="35" font-family="Montserrat" font-weight="700" font-size="28" fill="#C9A962">VMDNKO</text>
+                            <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <p class="footer-text">Акустичні стінові панелі та двері для сучасного інтер'єру</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Навігація</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="contacts.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Контакти</h4>
+                    <ul class="footer-contacts">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            +380 93 956 0057
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            info@vmdnko.ua
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Київ, Україна
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VMDNKO. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalItemsElement = document.getElementById('total-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const orderFormSection = document.getElementById('order-form-section');
+            const orderForm = document.getElementById('order-form');
+            
+            // Load cart from localStorage
+            function loadCart() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                return cart;
+            }
+            
+            // Save cart to localStorage
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            }
+            
+            // Update cart count in header
+            function updateCartCount() {
+                const cart = loadCart();
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = totalItems;
+                }
+            }
+            
+            // Render cart items
+            function renderCart() {
+                const cart = loadCart();
+                
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="empty-cart">Ваш кошик порожній</p>';
+                    totalItemsElement.textContent = '0';
+                    totalPriceElement.textContent = '0 грн';
+                    checkoutBtn.disabled = true;
+                    return;
+                }
+                
+                checkoutBtn.disabled = false;
+                let total = 0;
+                let totalItems = 0;
+                
+                cartItemsContainer.innerHTML = cart.map(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    totalItems += item.quantity;
+                    const imageUrl = item.image ? `images/${item.image}` : null;
+                    
+                    return `
+                        <div class="cart-item" data-id="${item.id}">
+                            <div class="cart-item-image">
+                                ${imageUrl ? 
+                                    `<img src="${imageUrl}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div style="display: none; align-items: center; justify-content: center; height: 100%; color: var(--color-text-muted);">Немає фото</div>` :
+                                    `<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--color-text-muted);">Немає фото</div>`
+                                }
+                            </div>
+                            <div class="cart-item-details">
+                                <h3 class="cart-item-title">${item.name}</h3>
+                                <p class="cart-item-category">${item.category}</p>
+                                <p class="cart-item-price">${item.price} грн</p>
+                            </div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                            </div>
+                            <div class="cart-item-total">
+                                <p>${itemTotal} грн</p>
+                                <button class="remove-btn" data-id="${item.id}">Видалити</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                totalItemsElement.textContent = totalItems;
+                totalPriceElement.textContent = total + ' грн';
+                
+                // Add event listeners for quantity buttons
+                document.querySelectorAll('.quantity-btn').forEach(btn => {
+                    btn.addEventListener('click', handleQuantityChange);
+                });
+                
+                // Add event listeners for remove buttons
+                document.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', handleRemoveItem);
+                });
+            }
+            
+            // Handle quantity change
+            function handleQuantityChange(e) {
+                const productId = e.target.getAttribute('data-id');
+                const action = e.target.classList.contains('increase') ? 'increase' : 'decrease';
+                const cart = loadCart();
+                const item = cart.find(i => i.id === productId);
+                
+                if (item) {
+                    if (action === 'increase') {
+                        item.quantity += 1;
+                    } else if (action === 'decrease' && item.quantity > 1) {
+                        item.quantity -= 1;
+                    }
+                    saveCart(cart);
+                    renderCart();
+                }
+            }
+            
+            // Handle item removal
+            function handleRemoveItem(e) {
+                const productId = e.target.getAttribute('data-id');
+                let cart = loadCart();
+                cart = cart.filter(item => item.id !== productId);
+                saveCart(cart);
+                renderCart();
+            }
+            
+            // Show order form
+            checkoutBtn.addEventListener('click', () => {
+                orderFormSection.style.display = 'block';
+                orderFormSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Handle order form submission
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const cart = loadCart();
+                if (cart.length === 0) {
+                    alert('Ваш кошик порожній');
+                    return;
+                }
+                
+                const orderData = {
+                    items: cart,
+                    customer: {
+                        name: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        address: document.getElementById('address').value,
+                        comment: document.getElementById('comment').value
+                    },
+                    total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                    date: new Date().toISOString()
+                };
+                
+                // Save order to localStorage
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                orders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // Clear cart
+                localStorage.removeItem('cart');
+                updateCartCount();
+                
+                // Show success message
+                alert('Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
+                
+                // Redirect to home
+                window.location.href = 'index.html';
+            });
+            
+            // Initialize
+            renderCart();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
