@@ -1029,6 +1029,16 @@ button {
     gap: var(--spacing-lg);
 }
 
+.product-info .product-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.product-info .product-actions .btn {
+    flex: 1;
+}
+
 .product-info-title {
     font-family: var(--font-primary);
     font-size: 28px;
