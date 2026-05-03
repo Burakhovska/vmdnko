@@ -294,7 +294,7 @@ const products = [
         size: "117 х 2780 х 12 мм",
         coating: "ПВХ",
         category: "Стінові панелі",
-        image: ""
+        image: "MDF-TST-001.jpg"
     },
     {
         id: "HEX-TST-001",
