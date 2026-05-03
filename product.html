@@ -207,7 +207,7 @@
                         }
                         
                         // Update product info
-                        document.getElementById('product-description').textContent = product.description || 'Опис відсутній';
+                        document.getElementById('product-description').innerHTML = product.description || 'Опис відсутній';
                         document.getElementById('product-price').textContent = `${product.price} грн`;
                         document.getElementById('product-id').textContent = product.id;
                         document.getElementById('product-color').textContent = product.color;
