@@ -235,6 +235,7 @@
                             <div class="cart-item-details">
                                 <h3 class="cart-item-title">${item.name}</h3>
                                 <p class="cart-item-category">${item.category}</p>
+                                ${item.selectedColor ? `<p class="cart-item-color">Колір: ${item.selectedColor}</p>` : ''}
                                 <p class="cart-item-price">${item.price} грн</p>
                             </div>
                             <div class="cart-item-quantity">
@@ -309,7 +310,7 @@
                 
                 // Populate hidden fields with order data
                 const orderItemsText = cart.map(item => 
-                    `${item.name} (Артикул: ${item.id}) - ${item.quantity} шт. × ${item.price} грн = ${item.price * item.quantity} грн`
+                    `${item.name} (Артикул: ${item.id})${item.selectedColor ? ` - Колір: ${item.selectedColor}` : ''} - ${item.quantity} шт. × ${item.price} грн = ${item.price * item.quantity} грн`
                 ).join('\n');
                 const orderTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 

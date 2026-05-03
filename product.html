@@ -94,6 +94,13 @@
                             </li>
                         </ul>
 
+                        <div class="color-selector" id="color-selector" style="display: none;">
+                            <label for="color-select">Оберіть колір:</label>
+                            <select id="color-select" name="color">
+                                <option value="">-- Оберіть колір --</option>
+                            </select>
+                        </div>
+
                         <div class="product-actions">
                             <button class="btn btn-primary add-to-cart" id="add-to-cart-btn">В кошик</button>
                             <a href="contacts.html" class="btn btn-outline">Залишити Заявку</a>
@@ -214,6 +221,23 @@
                         document.getElementById('product-size').textContent = product.size;
                         document.getElementById('product-coating').textContent = product.coating;
                         
+                        // Show color selector for MDF kit
+                        const colorSelector = document.getElementById('color-selector');
+                        const colorSelect = document.getElementById('color-select');
+                        if (product.id === 'MDF-TST-001' && product.color) {
+                            colorSelector.style.display = 'block';
+                            const colors = product.color.split(',').map(c => c.trim());
+                            colorSelect.innerHTML = '<option value="">-- Оберіть колір --</option>';
+                            colors.forEach(color => {
+                                const option = document.createElement('option');
+                                option.value = color;
+                                option.textContent = color;
+                                colorSelect.appendChild(option);
+                            });
+                        } else {
+                            colorSelector.style.display = 'none';
+                        }
+                        
                         // Load similar products (same category, excluding current product)
                         const similarProducts = products.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
                         const similarGrid = document.getElementById('similar-products-grid');
@@ -332,6 +356,16 @@
             const addToCartBtn = document.getElementById('add-to-cart-btn');
             if (addToCartBtn && product) {
                 addToCartBtn.addEventListener('click', () => {
+                    // Check if color is selected for MDF kit
+                    if (product.id === 'MDF-TST-001') {
+                        const colorSelect = document.getElementById('color-select');
+                        const selectedColor = colorSelect ? colorSelect.value : '';
+                        if (!selectedColor) {
+                            showToast('Будь ласка, оберіть колір');
+                            return;
+                        }
+                        product.selectedColor = selectedColor;
+                    }
                     addToCart(product);
                     updateCartCount();
                     showToast('Товар додано до кошика!');

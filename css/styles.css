@@ -219,6 +219,12 @@ button {
     color: var(--color-gold);
 }
 
+.cart-item-color {
+    font-size: 14px;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
 .cart-item-quantity {
     display: flex;
     align-items: center;
@@ -1037,6 +1043,41 @@ button {
 
 .product-info .product-actions .btn {
     flex: 1;
+}
+
+.color-selector {
+    margin-top: var(--spacing-md);
+}
+
+.color-selector label {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+}
+
+.color-selector select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--color-dark);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 4px;
+    color: var(--color-white);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.color-selector select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.color-selector select option {
+    background: var(--color-dark);
+    color: var(--color-white);
 }
 
 .product-info-title {
