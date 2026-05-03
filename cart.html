@@ -85,7 +85,9 @@
         <section class="section" id="order-form-section" style="display: none;">
             <div class="container">
                 <h2 class="section-title">Оформлення замовлення</h2>
-                <form class="contact-form" id="order-form">
+                <form class="contact-form" id="order-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <input type="hidden" id="order-items" name="order_items">
+                    <input type="hidden" id="order-total" name="order_total">
                     <div class="form-group">
                         <label for="name">Ім'я *</label>
                         <input type="text" id="name" name="name" required>
@@ -148,7 +150,7 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
                             </svg>
-                            info@vmdnko.ua
+                            vmdnk@outlook.com
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -305,6 +307,16 @@
                     return;
                 }
                 
+                // Populate hidden fields with order data
+                const orderItemsText = cart.map(item => 
+                    `${item.name} (Артикул: ${item.id}) - ${item.quantity} шт. × ${item.price} грн = ${item.price * item.quantity} грн`
+                ).join('\n');
+                const orderTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                document.getElementById('order-items').value = orderItemsText;
+                document.getElementById('order-total').value = orderTotal + ' грн';
+                
+                // Save order to localStorage for backup
                 const orderData = {
                     items: cart,
                     customer: {
@@ -314,11 +326,10 @@
                         address: document.getElementById('address').value,
                         comment: document.getElementById('comment').value
                     },
-                    total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                    total: orderTotal,
                     date: new Date().toISOString()
                 };
                 
-                // Save order to localStorage
                 const orders = JSON.parse(localStorage.getItem('orders')) || [];
                 orders.push(orderData);
                 localStorage.setItem('orders', JSON.stringify(orders));
@@ -327,13 +338,8 @@
                 localStorage.removeItem('cart');
                 updateCartCount();
                 
-                // Show success message
-                showToast('Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
-                
-                // Redirect to home after delay
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 2000);
+                // Submit form to Formspree
+                orderForm.submit();
             });
             
             // Initialize
