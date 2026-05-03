@@ -192,6 +192,9 @@
                     console.log('Product found:', product);
                     
                     if (product) {
+                        // Store product globally for add to cart button
+                        window.currentProduct = product;
+                        
                         // Update page title
                         document.title = `${product.name} - VMDNKO`;
                         
@@ -366,10 +369,16 @@
             
             // Add to cart button functionality
             const addToCartBtn = document.getElementById('add-to-cart-btn');
-            if (addToCartBtn && product) {
+            if (addToCartBtn) {
                 addToCartBtn.addEventListener('click', () => {
+                    const currentProduct = window.currentProduct;
+                    if (!currentProduct) {
+                        showToast('Помилка завантаження товару');
+                        return;
+                    }
+                    
                     // Check if color is selected for MDF kit
-                    if (product.id === 'MDF-TST-001') {
+                    if (currentProduct.id === 'MDF-TST-001') {
                         const colorSelect = document.getElementById('color-select');
                         const selectedColor = colorSelect ? colorSelect.value : '';
                         if (!selectedColor) {
@@ -377,10 +386,10 @@
                             return;
                         }
                         // Create a copy of product with selected color
-                        const productWithColor = { ...product, selectedColor: selectedColor };
+                        const productWithColor = { ...currentProduct, selectedColor: selectedColor };
                         addToCart(productWithColor);
                     } else {
-                        addToCart(product);
+                        addToCart(currentProduct);
                     }
                     updateCartCount();
                     showToast('Товар додано до кошика!');
