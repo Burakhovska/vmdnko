@@ -108,7 +108,7 @@
                         <label for="comment">Коментар до замовлення</label>
                         <textarea id="comment" name="comment" rows="4"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Підтвердити замовлення</button>
+                    <button type="button" class="btn btn-primary" id="submit-order-btn">Підтвердити замовлення</button>
                 </form>
             </div>
         </section>
@@ -298,71 +298,81 @@
                 orderFormSection.scrollIntoView({ behavior: 'smooth' });
             });
             
-            // Handle order form submission
-            orderForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const cart = loadCart();
-                if (cart.length === 0) {
-                    showToast('Ваш кошик порожній');
-                    return;
-                }
-                
-                // Populate hidden fields with order data
-                const orderItemsText = cart.map(item => 
-                    `${item.name} (Артикул: ${item.id})${item.selectedColor ? ` - Колір: ${item.selectedColor}` : ''} - ${item.quantity} шт. × ${item.price} грн = ${item.price * item.quantity} грн`
-                ).join('\n');
-                const orderTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                
-                document.getElementById('order-items').value = orderItemsText;
-                document.getElementById('order-total').value = orderTotal + ' грн';
-                
-                // Save order to localStorage for backup
-                const orderData = {
-                    items: cart,
-                    customer: {
-                        name: document.getElementById('name').value,
-                        phone: document.getElementById('phone').value,
-                        email: document.getElementById('email').value,
-                        address: document.getElementById('address').value,
-                        comment: document.getElementById('comment').value
-                    },
-                    total: orderTotal,
-                    date: new Date().toISOString()
-                };
-                
-                const orders = JSON.parse(localStorage.getItem('orders')) || [];
-                orders.push(orderData);
-                localStorage.setItem('orders', JSON.stringify(orders));
-                
-                // Clear cart
-                localStorage.removeItem('cart');
-                updateCartCount();
-                
-                // Submit form to Formspree via AJAX
-                const formData = new FormData(orderForm);
-                fetch('https://formspree.io/f/xkoeproa', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+            // Handle order form submission via button click
+            const submitOrderBtn = document.getElementById('submit-order-btn');
+            if (submitOrderBtn) {
+                submitOrderBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const cart = loadCart();
+                    if (cart.length === 0) {
+                        showToast('Ваш кошик порожній');
+                        return;
                     }
-                })
-                .then(response => {
-                    if (response.ok) {
+                    
+                    // Validate form
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const address = document.getElementById('address').value;
+                    
+                    if (!name || !phone || !address) {
+                        showToast('Будь ласка, заповніть всі обов\'язкові поля');
+                        return;
+                    }
+                    
+                    // Populate hidden fields with order data
+                    const orderItemsText = cart.map(item => 
+                        `${item.name} (Артикул: ${item.id})${item.selectedColor ? ` - Колір: ${item.selectedColor}` : ''} - ${item.quantity} шт. × ${item.price} грн = ${item.price * item.quantity} грн`
+                    ).join('\n');
+                    const orderTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    
+                    document.getElementById('order-items').value = orderItemsText;
+                    document.getElementById('order-total').value = orderTotal + ' грн';
+                    
+                    // Save order to localStorage for backup
+                    const orderData = {
+                        items: cart,
+                        customer: {
+                            name: name,
+                            phone: phone,
+                            email: document.getElementById('email').value,
+                            address: address,
+                            comment: document.getElementById('comment').value
+                        },
+                        total: orderTotal,
+                        date: new Date().toISOString()
+                    };
+                    
+                    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    orders.push(orderData);
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    
+                    // Clear cart
+                    localStorage.removeItem('cart');
+                    updateCartCount();
+                    
+                    // Submit form to Formspree via AJAX
+                    const formData = new FormData(orderForm);
+                    fetch('https://formspree.io/f/xkoeproa', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
                         showToast('Дякуємо! Ваше замовлення успішно відправлено.');
                         setTimeout(() => {
                             window.location.href = 'index.html';
                         }, 3000);
-                    } else {
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         showToast('Сталася помилка при відправці замовлення. Спробуйте ще раз.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showToast('Сталася помилка при відправці замовлення. Спробуйте ще раз.');
+                    });
                 });
-            });
+            }
             
             // Initialize
             renderCart();
