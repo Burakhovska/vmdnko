@@ -85,7 +85,7 @@
         <section class="section" id="order-form-section" style="display: none;">
             <div class="container">
                 <h2 class="section-title">Оформлення замовлення</h2>
-                <form class="contact-form" id="order-form" action="https://formspree.io/f/xkoeproa" method="POST">
+                <form class="contact-form" id="order-form">
                     <input type="hidden" id="order-items" name="order_items">
                     <input type="hidden" id="order-total" name="order_total">
                     <div class="form-group">
@@ -339,8 +339,29 @@
                 localStorage.removeItem('cart');
                 updateCartCount();
                 
-                // Submit form to Formspree
-                orderForm.submit();
+                // Submit form to Formspree via AJAX
+                const formData = new FormData(orderForm);
+                fetch('https://formspree.io/f/xkoeproa', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('Дякуємо! Ваше замовлення успішно відправлено.');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 3000);
+                    } else {
+                        showToast('Сталася помилка при відправці замовлення. Спробуйте ще раз.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Сталася помилка при відправці замовлення. Спробуйте ще раз.');
+                });
             });
             
             // Initialize
