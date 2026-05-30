@@ -349,7 +349,7 @@ const products = [
         size: "",
         coating: "ПВХ",
         category: "Комплектуючі",
-        image: ""
+        image: "start-finish.jpg"
     }
 ];
 
