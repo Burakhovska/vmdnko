@@ -1555,6 +1555,91 @@ button {
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
 
+/* ===== Testimonials Section ===== */
+.testimonials {
+    background: var(--color-graphite);
+    padding: var(--spacing-xxl) 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    transition: var(--transition-normal);
+}
+
+.testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(201, 169, 98, 0.3);
+    transform: translateY(-4px);
+}
+
+.testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201, 169, 98, 0.2) 0%, rgba(201, 169, 98, 0.1) 100%);
+    border: 2px solid rgba(201, 169, 98, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.testimonial-avatar span {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-gold);
+}
+
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.testimonial-rating {
+    color: var(--color-gold);
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(201, 169, 98, 0.1);
+}
+
+.author-name {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.author-location {
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1645,6 +1730,10 @@ button {
         gap: var(--spacing-md);
     }
     
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .contact-layout {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -1690,6 +1779,10 @@ button {
     .grid-2,
     .grid-3,
     .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
         grid-template-columns: 1fr;
     }
     
