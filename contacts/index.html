@@ -6,8 +6,8 @@
     <meta name="description" content="Контакти VMDNKO - зв'яжіться з нами для замовлення акустичних стінових панелей та дверей.">
     <meta name="keywords" content="контакти, зв'язатися, VMDNKO, акустичні панелі, форма, карта">
     <title>Контакти - VMDNKO</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,15 +17,15 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="VMDNKO" width="150" height="50">
+                <a href="../index.html" class="logo">
+                    <img src="../images/logo.png" alt="VMDNKO" width="230" height="50">
                 </a>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Головна</a></li>
-                    <li><a href="catalog.html" class="nav-link">Каталог</a></li>
-                    <li><a href="about.html" class="nav-link">Про нас</a></li>
-                    <li><a href="contacts.html" class="nav-link active">Контакти</a></li>
-                    <li><a href="cart.html" class="nav-link cart-link">
+                    <li><a href="../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="../catalog/" class="nav-link">Каталог</a></li>
+                    <li><a href="../about/" class="nav-link">Про нас</a></li>
+                    <li><a href="../contacts/" class="nav-link active">Контакти</a></li>
+                    <li><a href="../cart/" class="nav-link cart-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -232,10 +232,10 @@
                 <div class="footer-section">
                     <h4 class="footer-title">Навігація</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Головна</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="about.html">Про нас</a></li>
-                        <li><a href="contacts.html">Контакти</a></li>
+                        <li><a href="../index.html">Головна</a></li>
+                        <li><a href="../catalog/">Каталог</a></li>
+                        <li><a href="../about/">Про нас</a></li>
+                        <li><a href="../contacts/">Контакти</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -263,6 +263,14 @@
                         </li>
                     </ul>
                 </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Юридична інформація</h4>
+                    <ul class="footer-links">
+                        <li><a href="../cookie-policy/">Політика Cookie</a></li>
+                        <li><a href="../privacy-policy/">Політика Конфіденційності</a></li>
+                        <li><a href="../terms-and-conditions/">Умови Використання</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 VMDNKO. Всі права захищені.</p>
@@ -270,6 +278,41 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                Ми використовуємо cookie для покращення вашого досвіду на сайті. Продовжуючи перегляд, ви погоджуєтесь з нашою <a href="../cookie-policy/">політикою cookie</a>.
+            </div>
+            <div class="cookie-banner-buttons">
+                <button class="btn btn-outline" id="cookie-decline">Відхилити</button>
+                <button class="btn btn-primary" id="cookie-accept">Прийняти</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
+            
+            const cookieChoice = localStorage.getItem('cookieChoice');
+            
+            if (!cookieChoice) {
+                cookieBanner.classList.add('show');
+            }
+            
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'accepted');
+                cookieBanner.classList.remove('show');
+            });
+            
+            declineBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'declined');
+                cookieBanner.classList.remove('show');
+            });
+        });
+    </script>
 </body>
 </html>

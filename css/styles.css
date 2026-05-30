@@ -26,7 +26,7 @@
     --container-max: 1200px;
     --spacing-xs: 8px;
     --spacing-sm: 16px;
-    --spacing-md: 24px;
+    --spacing-md: 14px;
     --spacing-lg: 40px;
     --spacing-xl: 64px;
     --spacing-xxl: 96px;
@@ -1097,7 +1097,86 @@ button {
     font-family: var(--font-primary);
     font-size: 20px;
     font-weight: 600;
-    color: var(--color-white);
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-graphite);
+    border-top: 1px solid rgba(201, 169, 98, 0.3);
+    padding: var(--spacing-md);
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-banner.show {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cookie-banner-content {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.cookie-banner-text {
+    flex: 1;
+    min-width: 200px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.cookie-banner-text a {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+
+.cookie-banner-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.cookie-banner-buttons .btn {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .cookie-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cookie-banner-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cookie-banner-buttons .btn {
+        flex: 1;
+    }
 }
 
 .product-specs {

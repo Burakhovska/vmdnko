@@ -18,14 +18,14 @@
         <div class="container">
             <nav class="nav">
                 <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="VMDNKO" width="150" height="50">
+                    <img src="images/logo.png" alt="VMDNKO" width="230" height="50">
                 </a>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Головна</a></li>
-                    <li><a href="catalog.html" class="nav-link">Каталог</a></li>
-                    <li><a href="about.html" class="nav-link">Про нас</a></li>
-                    <li><a href="contacts.html" class="nav-link">Контакти</a></li>
-                    <li><a href="cart.html" class="nav-link cart-link">
+                    <li><a href="catalog/" class="nav-link">Каталог</a></li>
+                    <li><a href="about/" class="nav-link">Про нас</a></li>
+                    <li><a href="contacts/" class="nav-link">Контакти</a></li>
+                    <li><a href="cart/" class="nav-link cart-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -54,7 +54,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title">Акустичні Стінові Панелі</h1>
                     <p class="hero-subtitle">Поєднання сучасного дизайну та функціональності. Ефективне шумопоглинання для комфортного простору</p>
-                    <a href="catalog.html" class="btn btn-primary">Каталог</a>
+                    <a href="catalog/" class="btn btn-primary">Каталог</a>
                 </div>
             </div>
         </section>
@@ -104,7 +104,7 @@
             <div class="container">
                 <h2 class="section-title">Категорії Продукції</h2>
                 <div class="grid grid-2">
-                    <a href="catalog.html" class="card category-card">
+                    <a href="catalog.htmlhtml" class="card category-card">
                         <div class="category-image">
                             <div class="category-bg category-bg-panels"></div>
                         </div>
@@ -114,7 +114,7 @@
                             <span class="category-link">Дивитись</span>
                         </div>
                     </a>
-                    <a href="catalog.html" class="card category-card">
+                    <a href="catalog.htmlhtml" class="card category-card">
                         <div class="category-image">
                             <div class="category-bg category-bg-doors"></div>
                         </div>
@@ -144,7 +144,7 @@
                 <div class="about-preview-content">
                     <h2 class="section-title">Про Акустичні Панелі</h2>
                     <p class="about-text">Акустичні стінові панелі — це поєднання сучасного дизайну та функціональності. Вони не лише прикрашають інтер'єр, а й значно покращують акустику приміщення: зменшують відлуння, поглинають шум і створюють комфортну атмосферу для життя та роботи. Ідеально підходять для квартир, будинків, офісів, студій, салонів краси та комерційних просторів.</p>
-                    <a href="catalog.html" class="btn btn-secondary">Дивитись Каталог</a>
+                    <a href="catalog/" class="btn btn-secondary">Дивитись Каталог</a>
                 </div>
             </div>
         </section>
@@ -155,7 +155,7 @@
                 <div class="cta-content">
                     <h2 class="cta-title">Готові Перетворити Свій Інтер'єр?</h2>
                     <p class="cta-text">Залиште заявку і наш менеджер зв'яжеться з вами для консультації</p>
-                    <a href="contacts.html" class="btn btn-primary">Залишити Заявку</a>
+                    <a href="contacts/" class="btn btn-primary">Залишити Заявку</a>
                 </div>
             </div>
         </section>
@@ -208,6 +208,14 @@
                         </li>
                     </ul>
                 </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Юридична інформація</h4>
+                    <ul class="footer-links">
+                        <li><a href="cookie-policy/">Політика Cookie</a></li>
+                        <li><a href="privacy-policy/">Політика Конфіденційності</a></li>
+                        <li><a href="terms-and-conditions/">Умови Використання</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 VMDNKO. Всі права захищені.</p>
@@ -255,7 +263,7 @@
                             <h3 class="product-title">${product.name}</h3>
                             <p class="product-category">${product.category}</p>
                             <p class="product-price">${product.price} грн</p>
-                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                            <a href="product/?id=${product.id}" class="btn btn-outline">Детальніше</a>
                         `;
                     } else {
                         productCard.innerHTML = `
@@ -267,12 +275,51 @@
                             <h3 class="product-title">${product.name}</h3>
                             <p class="product-category">${product.category}</p>
                             <p class="product-price">${product.price} грн</p>
-                            <a href="product.html?id=${product.id}" class="btn btn-outline">Детальніше</a>
+                            <a href="product/?id=${product.id}" class="btn btn-outline">Детальніше</a>
                         `;
                     }
                     popularGrid.appendChild(productCard);
                 });
             }
+        });
+    </script>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                Ми використовуємо cookie для покращення вашого досвіду на сайті. Продовжуючи перегляд, ви погоджуєтесь з нашою <a href="cookie-policy/">політикою cookie</a>.
+            </div>
+            <div class="cookie-banner-buttons">
+                <button class="btn btn-outline" id="cookie-decline">Відхилити</button>
+                <button class="btn btn-primary" id="cookie-accept">Прийняти</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Banner
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
+            
+            // Check if user has already made a choice
+            const cookieChoice = localStorage.getItem('cookieChoice');
+            
+            if (!cookieChoice) {
+                cookieBanner.classList.add('show');
+            }
+            
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'accepted');
+                cookieBanner.classList.remove('show');
+            });
+            
+            declineBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'declined');
+                cookieBanner.classList.remove('show');
+            });
         });
     </script>
 </body>
