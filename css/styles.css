@@ -1136,8 +1136,6 @@ button {
 
 .mod-btn.disabled {
     opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
 }
 
 .mod-color-swatches {
@@ -1180,8 +1178,6 @@ button {
 
 .color-swatch.disabled {
     opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
 }
 
 .product-info-title {

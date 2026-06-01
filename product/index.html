@@ -478,7 +478,8 @@
                                     const available = availableCoatings.has(coating);
                                     btn.classList.toggle('active', selections.coating === coating);
                                     btn.classList.toggle('disabled', !available);
-                                    btn.disabled = !available;
+                                    // Don't disable the button, just show visual state
+                                    btn.disabled = false;
                                 });
                                 
                                 // Update glass buttons
@@ -488,7 +489,7 @@
                                     const available = availableGlasses.has(glass);
                                     btn.classList.toggle('active', selections.glass === glass);
                                     btn.classList.toggle('disabled', !available);
-                                    btn.disabled = !available;
+                                    btn.disabled = false;
                                 });
                                 
                                 // Update size buttons
@@ -498,7 +499,7 @@
                                     const available = availableSizes.has(size);
                                     btn.classList.toggle('active', selections.size === size);
                                     btn.classList.toggle('disabled', !available);
-                                    btn.disabled = !available;
+                                    btn.disabled = false;
                                 });
                                 
                                 // Update color swatches
