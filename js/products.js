@@ -360,7 +360,7 @@ const products = [
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
         category: "Двері",
-        image: "door_meleniya.jpg",
+        image: "Білий.jpg",
         hasModifications: true,
         modifications: [
             {

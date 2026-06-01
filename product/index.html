@@ -106,15 +106,7 @@
                         <div class="main-image-container">
                             <img id="main-image" src="images/placeholder.jpg" alt="Product Image" class="main-image" onerror="this.src='images/placeholder.jpg'">
                         </div>
-                    </div>
-
-                    <!-- Product Info -->
-                    <div class="product-info">
-                        <h2 class="product-info-title">Опис</h2>
-                        <p class="product-description" id="product-description">Завантаження...</p>
-                        <p class="product-price" id="product-price">0 грн</p>
-                        
-                        <h3 class="product-specs-title">Характеристики</h3>
+                            <h3 class="product-specs-title">Характеристики</h3>
                         <ul class="product-specs">
                             <li>
                                 <span class="spec-label">Артикул:</span>
@@ -133,14 +125,14 @@
                                 <span class="spec-value" id="product-coating">-</span>
                             </li>
                         </ul>
+                    </div>
 
-                        <div class="color-selector" id="color-selector" style="display: none;">
-                            <label for="color-select">Оберіть колір:</label>
-                            <select id="color-select" name="color">
-                                <option value="">-- Оберіть колір --</option>
-                            </select>
-                        </div>
-
+                    <!-- Product Info -->
+                    <div class="product-info">
+                        <h2 class="product-info-title">Опис</h2>
+                        <p class="product-description" id="product-description">Завантаження...</p>
+                        <p class="product-price" id="product-price">0 грн</p>
+                        
                         <!-- Modification selectors for doors -->
                         <div class="modification-selectors" id="modification-selectors" style="display: none;">
                             <div class="mod-selector-group">
@@ -168,6 +160,15 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="color-selector" id="color-selector" style="display: none;">
+                            <label for="color-select">Оберіть колір:</label>
+                            <select id="color-select" name="color">
+                                <option value="">-- Оберіть колір --</option>
+                            </select>
+                        </div>
+
+                    
 
                         <div class="product-actions">
                             <button class="btn btn-primary add-to-cart" id="add-to-cart-btn">В кошик</button>
