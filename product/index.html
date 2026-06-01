@@ -141,6 +141,34 @@
                             </select>
                         </div>
 
+                        <!-- Modification selectors for doors -->
+                        <div class="modification-selectors" id="modification-selectors" style="display: none;">
+                            <div class="mod-selector-group">
+                                <label for="coating-select">Покриття:</label>
+                                <select id="coating-select" name="coating">
+                                    <option value="">-- Оберіть покриття --</option>
+                                </select>
+                            </div>
+                            <div class="mod-selector-group">
+                                <label for="glass-select">Скло:</label>
+                                <select id="glass-select" name="glass">
+                                    <option value="">-- Оберіть скло --</option>
+                                </select>
+                            </div>
+                            <div class="mod-selector-group">
+                                <label for="size-select">Розмір:</label>
+                                <select id="size-select" name="size">
+                                    <option value="">-- Оберіть розмір --</option>
+                                </select>
+                            </div>
+                            <div class="mod-selector-group">
+                                <label for="mod-color-select">Колір:</label>
+                                <select id="mod-color-select" name="mod-color">
+                                    <option value="">-- Оберіть колір --</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="product-actions">
                             <button class="btn btn-primary add-to-cart" id="add-to-cart-btn">В кошик</button>
                             <a href="../contacts/" class="btn btn-outline">Залишити Заявку</a>
@@ -325,6 +353,116 @@
                         } else {
                             colorSelector.style.display = 'none';
                         }
+
+                        // Show modification selectors for doors
+                        const modificationSelectors = document.getElementById('modification-selectors');
+                        if (product.hasModifications && product.modifications) {
+                            modificationSelectors.style.display = 'block';
+                            
+                            const coatingSelect = document.getElementById('coating-select');
+                            const glassSelect = document.getElementById('glass-select');
+                            const sizeSelect = document.getElementById('size-select');
+                            const modColorSelect = document.getElementById('mod-color-select');
+                            
+                            // Get unique coatings
+                            const coatings = [...new Set(product.modifications.map(m => m.coating))];
+                            coatingSelect.innerHTML = '<option value="">-- Оберіть покриття --</option>';
+                            coatings.forEach(coating => {
+                                const option = document.createElement('option');
+                                option.value = coating;
+                                option.textContent = coating;
+                                coatingSelect.appendChild(option);
+                            });
+                            
+                            // Get unique glass types
+                            const glasses = [...new Set(product.modifications.map(m => m.glass))];
+                            glassSelect.innerHTML = '<option value="">-- Оберіть скло --</option>';
+                            glasses.forEach(glass => {
+                                const option = document.createElement('option');
+                                option.value = glass;
+                                option.textContent = glass;
+                                glassSelect.appendChild(option);
+                            });
+                            
+                            // Track selected modification
+                            let selectedModification = null;
+                            
+                            // Update options when coating or glass changes
+                            function updateModificationOptions() {
+                                const selectedCoating = coatingSelect.value;
+                                const selectedGlass = glassSelect.value;
+                                
+                                if (selectedCoating && selectedGlass) {
+                                    const matchingMod = product.modifications.find(m => m.coating === selectedCoating && m.glass === selectedGlass);
+                                    if (matchingMod) {
+                                        selectedModification = matchingMod;
+                                        
+                                        // Update price
+                                        document.getElementById('product-price').textContent = `${matchingMod.price} грн`;
+                                        
+                                        // Update sizes
+                                        sizeSelect.innerHTML = '<option value="">-- Оберіть розмір --</option>';
+                                        matchingMod.sizes.forEach(size => {
+                                            const option = document.createElement('option');
+                                            option.value = size;
+                                            option.textContent = size;
+                                            sizeSelect.appendChild(option);
+                                        });
+                                        
+                                        // Update colors
+                                        modColorSelect.innerHTML = '<option value="">-- Оберіть колір --</option>';
+                                        matchingMod.colors.forEach(color => {
+                                            const option = document.createElement('option');
+                                            option.value = color;
+                                            option.textContent = color;
+                                            modColorSelect.appendChild(option);
+                                        });
+                                        
+                                        // Update specs
+                                        document.getElementById('product-size').textContent = matchingMod.sizes.join(', ');
+                                        document.getElementById('product-coating').textContent = selectedCoating;
+                                    }
+                                } else {
+                                    sizeSelect.innerHTML = '<option value="">-- Оберіть розмір --</option>';
+                                    modColorSelect.innerHTML = '<option value="">-- Оберіть колір --</option>';
+                                    selectedModification = null;
+                                }
+                            }
+                            
+                            coatingSelect.addEventListener('change', updateModificationOptions);
+                            glassSelect.addEventListener('change', updateModificationOptions);
+                            
+                            // Update image when color changes
+                            modColorSelect.addEventListener('change', function() {
+                                if (selectedModification && this.value) {
+                                    const colorIndex = selectedModification.colors.indexOf(this.value);
+                                    if (colorIndex >= 0 && selectedModification.images[colorIndex]) {
+                                        const imageUrl = `../images/${selectedModification.images[colorIndex]}`;
+                                        const mainImage = document.getElementById('main-image');
+                                        mainImage.src = imageUrl;
+                                    }
+                                }
+                            });
+                            
+                            // Store selected modification for cart
+                            window.selectedModification = null;
+                            sizeSelect.addEventListener('change', function() {
+                                window.selectedModification = {
+                                    ...selectedModification,
+                                    selectedSize: this.value,
+                                    selectedColor: modColorSelect.value
+                                };
+                            });
+                            modColorSelect.addEventListener('change', function() {
+                                window.selectedModification = {
+                                    ...selectedModification,
+                                    selectedSize: sizeSelect.value,
+                                    selectedColor: this.value
+                                };
+                            });
+                        } else {
+                            modificationSelectors.style.display = 'none';
+                        }
                         
                         // Load similar products (same category, excluding current product)
                         const similarProducts = products.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
@@ -387,7 +525,33 @@
                     } else {
                         cart.push({ ...product, quantity: 1 });
                     }
-                } else {
+                } 
+                // For doors with modifications
+                else if (product.hasModifications && window.selectedModification) {
+                    const mod = window.selectedModification;
+                    const existingItem = cart.find(item => 
+                        item.id === product.id && 
+                        item.selectedCoating === mod.coating &&
+                        item.selectedGlass === mod.glass &&
+                        item.selectedSize === mod.selectedSize &&
+                        item.selectedColor === mod.selectedColor
+                    );
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ 
+                            ...product, 
+                            quantity: 1,
+                            selectedCoating: mod.coating,
+                            selectedGlass: mod.glass,
+                            selectedSize: mod.selectedSize,
+                            selectedColor: mod.selectedColor,
+                            price: mod.price
+                        });
+                    }
+                }
+                else {
                     const existingItem = cart.find(item => item.id === product.id);
                     
                     if (existingItem) {
