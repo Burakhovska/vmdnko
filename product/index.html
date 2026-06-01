@@ -450,59 +450,62 @@
                                 });
                             }
                             
+                            // Get available options for a specific type
+                            function getAvailableOptions(type, currentSelections) {
+                                const available = new Set();
+                                product.modifications.forEach(mod => {
+                                    const coatingMatch = !currentSelections.coating || mod.coating === currentSelections.coating;
+                                    const glassMatch = !currentSelections.glass || mod.glass === currentSelections.glass;
+                                    const sizeMatch = !currentSelections.size || mod.sizes.includes(currentSelections.size);
+                                    const colorMatch = !currentSelections.color || mod.colors.includes(currentSelections.color);
+                                    
+                                    if (coatingMatch && glassMatch && sizeMatch && colorMatch) {
+                                        if (type === 'coating') available.add(mod.coating);
+                                        if (type === 'glass') available.add(mod.glass);
+                                        if (type === 'size') mod.sizes.forEach(s => available.add(s));
+                                        if (type === 'color') mod.colors.forEach(c => available.add(c));
+                                    }
+                                });
+                                return available;
+                            }
+                            
                             // Update button states (enabled/disabled)
                             function updateButtonStates() {
                                 // Update coating buttons
+                                const availableCoatings = getAvailableOptions('coating', selections);
                                 coatingButtons.querySelectorAll('.mod-btn').forEach(btn => {
                                     const coating = btn.dataset.value;
-                                    const available = isCombinationAvailable(
-                                        coating,
-                                        selections.glass,
-                                        selections.size,
-                                        selections.color
-                                    );
+                                    const available = availableCoatings.has(coating);
                                     btn.classList.toggle('active', selections.coating === coating);
                                     btn.classList.toggle('disabled', !available);
                                     btn.disabled = !available;
                                 });
                                 
                                 // Update glass buttons
+                                const availableGlasses = getAvailableOptions('glass', selections);
                                 glassButtons.querySelectorAll('.mod-btn').forEach(btn => {
                                     const glass = btn.dataset.value;
-                                    const available = isCombinationAvailable(
-                                        selections.coating,
-                                        glass,
-                                        selections.size,
-                                        selections.color
-                                    );
+                                    const available = availableGlasses.has(glass);
                                     btn.classList.toggle('active', selections.glass === glass);
                                     btn.classList.toggle('disabled', !available);
                                     btn.disabled = !available;
                                 });
                                 
                                 // Update size buttons
+                                const availableSizes = getAvailableOptions('size', selections);
                                 sizeButtons.querySelectorAll('.mod-btn').forEach(btn => {
                                     const size = btn.dataset.value;
-                                    const available = isCombinationAvailable(
-                                        selections.coating,
-                                        selections.glass,
-                                        size,
-                                        selections.color
-                                    );
+                                    const available = availableSizes.has(size);
                                     btn.classList.toggle('active', selections.size === size);
                                     btn.classList.toggle('disabled', !available);
                                     btn.disabled = !available;
                                 });
                                 
                                 // Update color swatches
+                                const availableColors = getAvailableOptions('color', selections);
                                 colorSwatches.querySelectorAll('.color-swatch').forEach(swatch => {
                                     const color = swatch.dataset.value;
-                                    const available = isCombinationAvailable(
-                                        selections.coating,
-                                        selections.glass,
-                                        selections.size,
-                                        color
-                                    );
+                                    const available = availableColors.has(color);
                                     swatch.classList.toggle('active', selections.color === color);
                                     swatch.classList.toggle('disabled', !available);
                                 });
