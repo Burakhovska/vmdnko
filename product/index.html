@@ -136,28 +136,20 @@
                         <!-- Modification selectors for doors -->
                         <div class="modification-selectors" id="modification-selectors" style="display: none;">
                             <div class="mod-selector-group">
-                                <label for="coating-select">Покриття:</label>
-                                <select id="coating-select" name="coating">
-                                    <option value="">-- Оберіть покриття --</option>
-                                </select>
+                                <label class="mod-label">Покриття:</label>
+                                <div class="mod-buttons" id="coating-buttons"></div>
                             </div>
                             <div class="mod-selector-group">
-                                <label for="glass-select">Скло:</label>
-                                <select id="glass-select" name="glass">
-                                    <option value="">-- Оберіть скло --</option>
-                                </select>
+                                <label class="mod-label">Скло:</label>
+                                <div class="mod-buttons" id="glass-buttons"></div>
                             </div>
                             <div class="mod-selector-group">
-                                <label for="size-select">Розмір:</label>
-                                <select id="size-select" name="size">
-                                    <option value="">-- Оберіть розмір --</option>
-                                </select>
+                                <label class="mod-label">Розмір:</label>
+                                <div class="mod-buttons" id="size-buttons"></div>
                             </div>
                             <div class="mod-selector-group">
-                                <label for="mod-color-select">Колір:</label>
-                                <select id="mod-color-select" name="mod-color">
-                                    <option value="">-- Оберіть колір --</option>
-                                </select>
+                                <label class="mod-label">Колір:</label>
+                                <div class="mod-color-swatches" id="color-swatches"></div>
                             </div>
                         </div>
 
@@ -360,107 +352,201 @@
                         if (product.hasModifications && product.modifications) {
                             modificationSelectors.style.display = 'block';
                             
-                            const coatingSelect = document.getElementById('coating-select');
-                            const glassSelect = document.getElementById('glass-select');
-                            const sizeSelect = document.getElementById('size-select');
-                            const modColorSelect = document.getElementById('mod-color-select');
+                            const coatingButtons = document.getElementById('coating-buttons');
+                            const glassButtons = document.getElementById('glass-buttons');
+                            const sizeButtons = document.getElementById('size-buttons');
+                            const colorSwatches = document.getElementById('color-swatches');
                             
-                            // Get unique coatings
+                            // Track selections
+                            const selections = {
+                                coating: null,
+                                glass: null,
+                                size: null,
+                                color: null
+                            };
+                            
+                            // Get all unique values
                             const coatings = [...new Set(product.modifications.map(m => m.coating))];
-                            coatingSelect.innerHTML = '<option value="">-- Оберіть покриття --</option>';
-                            coatings.forEach(coating => {
-                                const option = document.createElement('option');
-                                option.value = coating;
-                                option.textContent = coating;
-                                coatingSelect.appendChild(option);
-                            });
-                            
-                            // Get unique glass types
                             const glasses = [...new Set(product.modifications.map(m => m.glass))];
-                            glassSelect.innerHTML = '<option value="">-- Оберіть скло --</option>';
-                            glasses.forEach(glass => {
-                                const option = document.createElement('option');
-                                option.value = glass;
-                                option.textContent = glass;
-                                glassSelect.appendChild(option);
+                            const sizes = [...new Set(product.modifications.flatMap(m => m.sizes))];
+                            const allColors = [...new Set(product.modifications.flatMap(m => m.colors))];
+                            
+                            // Create coating buttons
+                            coatings.forEach(coating => {
+                                const btn = document.createElement('button');
+                                btn.className = 'mod-btn';
+                                btn.textContent = coating;
+                                btn.dataset.value = coating;
+                                btn.addEventListener('click', () => selectOption('coating', coating));
+                                coatingButtons.appendChild(btn);
                             });
                             
-                            // Track selected modification
-                            let selectedModification = null;
+                            // Create glass buttons
+                            glasses.forEach(glass => {
+                                const btn = document.createElement('button');
+                                btn.className = 'mod-btn';
+                                btn.textContent = glass;
+                                btn.dataset.value = glass;
+                                btn.addEventListener('click', () => selectOption('glass', glass));
+                                glassButtons.appendChild(btn);
+                            });
                             
-                            // Update options when coating or glass changes
-                            function updateModificationOptions() {
-                                const selectedCoating = coatingSelect.value;
-                                const selectedGlass = glassSelect.value;
+                            // Create size buttons
+                            sizes.forEach(size => {
+                                const btn = document.createElement('button');
+                                btn.className = 'mod-btn';
+                                btn.textContent = size;
+                                btn.dataset.value = size;
+                                btn.addEventListener('click', () => selectOption('size', size));
+                                sizeButtons.appendChild(btn);
+                            });
+                            
+                            // Create color swatches
+                            allColors.forEach(color => {
+                                const swatch = document.createElement('div');
+                                swatch.className = 'color-swatch';
+                                swatch.dataset.value = color;
                                 
-                                if (selectedCoating && selectedGlass) {
-                                    const matchingMod = product.modifications.find(m => m.coating === selectedCoating && m.glass === selectedGlass);
-                                    if (matchingMod) {
-                                        selectedModification = matchingMod;
-                                        
-                                        // Update price
-                                        document.getElementById('product-price').textContent = `${matchingMod.price} грн`;
-                                        
-                                        // Update sizes
-                                        sizeSelect.innerHTML = '<option value="">-- Оберіть розмір --</option>';
-                                        matchingMod.sizes.forEach(size => {
-                                            const option = document.createElement('option');
-                                            option.value = size;
-                                            option.textContent = size;
-                                            sizeSelect.appendChild(option);
-                                        });
-                                        
-                                        // Update colors
-                                        modColorSelect.innerHTML = '<option value="">-- Оберіть колір --</option>';
-                                        matchingMod.colors.forEach(color => {
-                                            const option = document.createElement('option');
-                                            option.value = color;
-                                            option.textContent = color;
-                                            modColorSelect.appendChild(option);
-                                        });
-                                        
-                                        // Update specs
-                                        document.getElementById('product-size').textContent = matchingMod.sizes.join(', ');
-                                        document.getElementById('product-coating').textContent = selectedCoating;
+                                // Find image for this color
+                                let colorImage = null;
+                                for (const mod of product.modifications) {
+                                    const colorIndex = mod.colors.indexOf(color);
+                                    if (colorIndex >= 0 && mod.images[colorIndex]) {
+                                        colorImage = mod.images[colorIndex];
+                                        break;
                                     }
+                                }
+                                
+                                if (colorImage) {
+                                    const img = document.createElement('img');
+                                    img.src = `../images/${colorImage}`;
+                                    img.alt = color;
+                                    swatch.appendChild(img);
                                 } else {
-                                    sizeSelect.innerHTML = '<option value="">-- Оберіть розмір --</option>';
-                                    modColorSelect.innerHTML = '<option value="">-- Оберіть колір --</option>';
-                                    selectedModification = null;
+                                    swatch.textContent = color;
+                                }
+                                
+                                swatch.addEventListener('click', () => selectOption('color', color));
+                                colorSwatches.appendChild(swatch);
+                            });
+                            
+                            // Selection function
+                            function selectOption(type, value) {
+                                selections[type] = value;
+                                
+                                // Update UI
+                                updateButtonStates();
+                                updatePriceAndImage();
+                            }
+                            
+                            // Check if combination is available
+                            function isCombinationAvailable(coating, glass, size, color) {
+                                return product.modifications.some(mod => {
+                                    const coatingMatch = !coating || mod.coating === coating;
+                                    const glassMatch = !glass || mod.glass === glass;
+                                    const sizeMatch = !size || mod.sizes.includes(size);
+                                    const colorMatch = !color || mod.colors.includes(color);
+                                    return coatingMatch && glassMatch && sizeMatch && colorMatch;
+                                });
+                            }
+                            
+                            // Update button states (enabled/disabled)
+                            function updateButtonStates() {
+                                // Update coating buttons
+                                coatingButtons.querySelectorAll('.mod-btn').forEach(btn => {
+                                    const coating = btn.dataset.value;
+                                    const available = isCombinationAvailable(
+                                        coating,
+                                        selections.glass,
+                                        selections.size,
+                                        selections.color
+                                    );
+                                    btn.classList.toggle('active', selections.coating === coating);
+                                    btn.classList.toggle('disabled', !available);
+                                    btn.disabled = !available;
+                                });
+                                
+                                // Update glass buttons
+                                glassButtons.querySelectorAll('.mod-btn').forEach(btn => {
+                                    const glass = btn.dataset.value;
+                                    const available = isCombinationAvailable(
+                                        selections.coating,
+                                        glass,
+                                        selections.size,
+                                        selections.color
+                                    );
+                                    btn.classList.toggle('active', selections.glass === glass);
+                                    btn.classList.toggle('disabled', !available);
+                                    btn.disabled = !available;
+                                });
+                                
+                                // Update size buttons
+                                sizeButtons.querySelectorAll('.mod-btn').forEach(btn => {
+                                    const size = btn.dataset.value;
+                                    const available = isCombinationAvailable(
+                                        selections.coating,
+                                        selections.glass,
+                                        size,
+                                        selections.color
+                                    );
+                                    btn.classList.toggle('active', selections.size === size);
+                                    btn.classList.toggle('disabled', !available);
+                                    btn.disabled = !available;
+                                });
+                                
+                                // Update color swatches
+                                colorSwatches.querySelectorAll('.color-swatch').forEach(swatch => {
+                                    const color = swatch.dataset.value;
+                                    const available = isCombinationAvailable(
+                                        selections.coating,
+                                        selections.glass,
+                                        selections.size,
+                                        color
+                                    );
+                                    swatch.classList.toggle('active', selections.color === color);
+                                    swatch.classList.toggle('disabled', !available);
+                                });
+                            }
+                            
+                            // Update price and image based on selections
+                            function updatePriceAndImage() {
+                                const matchingMod = product.modifications.find(mod => {
+                                    const coatingMatch = !selections.coating || mod.coating === selections.coating;
+                                    const glassMatch = !selections.glass || mod.glass === selections.glass;
+                                    const sizeMatch = !selections.size || mod.sizes.includes(selections.size);
+                                    const colorMatch = !selections.color || mod.colors.includes(selections.color);
+                                    return coatingMatch && glassMatch && sizeMatch && colorMatch;
+                                });
+                                
+                                if (matchingMod) {
+                                    document.getElementById('product-price').textContent = `${matchingMod.price} грн`;
+                                    
+                                    // Update image if color is selected
+                                    if (selections.color) {
+                                        const colorIndex = matchingMod.colors.indexOf(selections.color);
+                                        if (colorIndex >= 0 && matchingMod.images[colorIndex]) {
+                                            const imageUrl = `../images/${matchingMod.images[colorIndex]}`;
+                                            document.getElementById('main-image').src = imageUrl;
+                                        }
+                                    }
+                                    
+                                    // Update specs
+                                    document.getElementById('product-size').textContent = matchingMod.sizes.join(', ');
+                                    document.getElementById('product-coating').textContent = matchingMod.coating;
+                                    
+                                    // Store for cart
+                                    window.selectedModification = {
+                                        ...matchingMod,
+                                        selectedCoating: selections.coating || matchingMod.coating,
+                                        selectedGlass: selections.glass || matchingMod.glass,
+                                        selectedSize: selections.size,
+                                        selectedColor: selections.color
+                                    };
                                 }
                             }
                             
-                            coatingSelect.addEventListener('change', updateModificationOptions);
-                            glassSelect.addEventListener('change', updateModificationOptions);
-                            
-                            // Update image when color changes
-                            modColorSelect.addEventListener('change', function() {
-                                if (selectedModification && this.value) {
-                                    const colorIndex = selectedModification.colors.indexOf(this.value);
-                                    if (colorIndex >= 0 && selectedModification.images[colorIndex]) {
-                                        const imageUrl = `../images/${selectedModification.images[colorIndex]}`;
-                                        const mainImage = document.getElementById('main-image');
-                                        mainImage.src = imageUrl;
-                                    }
-                                }
-                            });
-                            
-                            // Store selected modification for cart
-                            window.selectedModification = null;
-                            sizeSelect.addEventListener('change', function() {
-                                window.selectedModification = {
-                                    ...selectedModification,
-                                    selectedSize: this.value,
-                                    selectedColor: modColorSelect.value
-                                };
-                            });
-                            modColorSelect.addEventListener('change', function() {
-                                window.selectedModification = {
-                                    ...selectedModification,
-                                    selectedSize: sizeSelect.value,
-                                    selectedColor: this.value
-                                };
-                            });
+                            // Initial state
+                            updateButtonStates();
                         } else {
                             modificationSelectors.style.display = 'none';
                         }

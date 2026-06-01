@@ -1089,42 +1089,99 @@ button {
 }
 
 .mod-selector-group {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 .mod-selector-group:last-child {
     margin-bottom: 0;
 }
 
-.mod-selector-group label {
+.mod-label {
     display: block;
     font-family: var(--font-primary);
     font-size: 14px;
     font-weight: 500;
     color: var(--color-white);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
-.mod-selector-group select {
-    width: 100%;
-    padding: var(--spacing-sm);
+.mod-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.mod-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
     background: var(--color-graphite);
     border: 1px solid rgba(201, 169, 98, 0.3);
     border-radius: 4px;
     color: var(--color-white);
     font-size: 14px;
+    font-family: var(--font-primary);
     cursor: pointer;
     transition: var(--transition-normal);
 }
 
-.mod-selector-group select:focus {
-    outline: none;
+.mod-btn:hover:not(.disabled) {
+    background: rgba(201, 169, 98, 0.2);
     border-color: var(--color-gold);
 }
 
-.mod-selector-group select option {
+.mod-btn.active {
+    background: var(--color-gold);
+    color: var(--color-black);
+    border-color: var(--color-gold);
+}
+
+.mod-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.mod-color-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.color-swatch {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(201, 169, 98, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    overflow: hidden;
     background: var(--color-graphite);
-    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.color-swatch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.color-swatch:hover:not(.disabled) {
+    border-color: var(--color-gold);
+    transform: scale(1.05);
+}
+
+.color-swatch.active {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 2px var(--color-gold);
+}
+
+.color-swatch.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .product-info-title {
