@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 
-Sitemap: https://vmdnko.com/sitemap.xml
+Sitemap: https://www.vmdnko.com.ua/sitemap.xml

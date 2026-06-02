@@ -1,32 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://vmdnko.com/</loc>
-        <lastmod>2026-05-31</lastmod>
+        <loc>https://www.vmdnko.com.ua/</loc>
+        <lastmod>2026-06-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://vmdnko.com/catalog/</loc>
-        <lastmod>2026-05-31</lastmod>
+        <loc>https://www.vmdnko.com.ua/catalog/</loc>
+        <lastmod>2026-06-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://vmdnko.com/about/</loc>
-        <lastmod>2026-05-31</lastmod>
+        <loc>https://www.vmdnko.com.ua/about/</loc>
+        <lastmod>2026-06-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://vmdnko.com/contacts/</loc>
-        <lastmod>2026-05-31</lastmod>
+        <loc>https://www.vmdnko.com.ua/contacts/</loc>
+        <lastmod>2026-06-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://vmdnko.com/product/</loc>
-        <lastmod>2026-05-31</lastmod>
+        <loc>https://www.vmdnko.com.ua/cart/</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/cookie-policy/</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/privacy-policy/</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/terms-and-conditions/</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0001</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0002</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0003</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0004</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0005</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0006</loc>
+        <lastmod>2026-06-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vmdnko.com.ua/product/?id=DR-0008</loc>
+        <lastmod>2026-06-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
