@@ -728,7 +728,7 @@ const products = [
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
         category: "Двері",
-        image: "DR-0009/Білий ультрамат.jpg",
+        image: "DR-0009/Білий Ультрамат.jpg",
         hasModifications: true,
         modifications: [
             {
@@ -738,7 +738,7 @@ const products = [
                 price: 6342,
                 colors: ["Білий ультрамат"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["DR-0009/Білий ультрамат.jpg"]
+                images: ["DR-0009/Білий Ультрамат.jpg"]
             },
             {
                 id: "DR-0009-2",
@@ -756,7 +756,7 @@ const products = [
                 price: 5708,
                 colors: ["Білий ультрамат"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["DR-0009/Білий ультрамат.jpg"]
+                images: ["DR-0009/Білий Ультрамат.jpg"]
             },
             {
                 id: "DR-0009-4",
