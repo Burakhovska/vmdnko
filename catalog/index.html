@@ -474,6 +474,14 @@
                 filterOverlay.addEventListener('click', closeFilterSidebar);
             }
 
+            // Prevent sidebar from closing when clicking inside it
+            const filterSidebarContent = document.querySelector('.filter-sidebar-content');
+            if (filterSidebarContent) {
+                filterSidebarContent.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
             // Close sidebar on Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
@@ -524,6 +532,7 @@
                 // Filter buttons listeners
                 document.addEventListener('click', (e) => {
                     if (e.target.classList.contains('filter-btn')) {
+                        e.stopPropagation(); // Prevent event from bubbling to overlay
                         const filterType = e.target.getAttribute('data-type');
                         const filterValue = e.target.getAttribute('data-filter');
                         
