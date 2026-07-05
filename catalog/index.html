@@ -114,9 +114,29 @@
             <div class="container">
                 <div class="filters">
                     <div class="filter-group">
+                        <h3 class="filter-title">Пошук</h3>
+                        <input type="text" id="search-input" class="search-input" placeholder="Пошук за назвою...">
+                    </div>
+                    <div class="filter-group">
                         <h3 class="filter-title">Категорія</h3>
-                        <div class="filter-buttons">
+                        <div class="filter-buttons" id="category-filters">
                             <button class="filter-btn active" data-filter="all">Всі</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-title">Покриття</h3>
+                        <div class="filter-buttons" id="coating-filters">
+                            <button class="filter-btn active" data-filter="all">Всі</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-title">Ціновий діапазон</h3>
+                        <div class="filter-buttons" id="price-filters">
+                            <button class="filter-btn active" data-filter="all" data-type="price">Всі</button>
+                            <button class="filter-btn" data-filter="0-1000" data-type="price">до 1000 грн</button>
+                            <button class="filter-btn" data-filter="1000-5000" data-type="price">1000-5000 грн</button>
+                            <button class="filter-btn" data-filter="5000-10000" data-type="price">5000-10000 грн</button>
+                            <button class="filter-btn" data-filter="10000+" data-type="price">від 10000 грн</button>
                         </div>
                     </div>
                     <div class="filter-group">
@@ -125,8 +145,17 @@
                             <option value="default">За замовчуванням</option>
                             <option value="price-asc">Ціна: від дешевих до дорогих</option>
                             <option value="price-desc">Ціна: від дорогих до дешевих</option>
+                            <option value="name-asc">Назва: А-Я</option>
+                            <option value="name-desc">Назва: Я-А</option>
                         </select>
                     </div>
+                    <div class="filter-group">
+                        <h3 class="filter-title">Дії</h3>
+                        <button id="reset-filters" class="btn btn-outline btn-sm">Скинути фільтри</button>
+                    </div>
+                </div>
+                <div class="filter-results">
+                    <span id="results-count">Знайдено товарів: 0</span>
                 </div>
             </div>
         </section>
@@ -257,10 +286,29 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Render products dynamically
             const productsGrid = document.getElementById('products-grid');
+            const searchInput = document.getElementById('search-input');
+            const resultsCount = document.getElementById('results-count');
+            
+            // Filter state
+            let currentFilters = {
+                search: '',
+                category: 'all',
+                coating: 'all',
+                price: 'all'
+            };
             
             function renderProducts(productsToShow) {
                 if (!productsGrid) return;
                 productsGrid.innerHTML = '';
+                
+                if (productsToShow.length === 0) {
+                    productsGrid.innerHTML = '<p class="no-results">Товарів не знайдено</p>';
+                    if (resultsCount) {
+                        resultsCount.textContent = 'Знайдено товарів: 0';
+                    }
+                    return;
+                }
+                
                 productsToShow.forEach(product => {
                     const imageUrl = product.image ? `../images/${product.image}` : null;
                     const productCard = document.createElement('div');
@@ -302,64 +350,179 @@
                     }
                     productsGrid.appendChild(productCard);
                 });
+                
+                if (resultsCount) {
+                    resultsCount.textContent = `Знайдено товарів: ${productsToShow.length}`;
+                }
+            }
+            
+            // Filter products based on current filters
+            function filterProducts() {
+                let filtered = [...products];
+                
+                // Search filter
+                if (currentFilters.search) {
+                    const searchTerm = currentFilters.search.toLowerCase();
+                    filtered = filtered.filter(product => 
+                        product.name.toLowerCase().includes(searchTerm) ||
+                        product.category.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                // Category filter
+                if (currentFilters.category !== 'all') {
+                    filtered = filtered.filter(product => product.category === currentFilters.category);
+                }
+                
+                // Coating filter
+                if (currentFilters.coating !== 'all') {
+                    filtered = filtered.filter(product => {
+                        const coating = product.coating || '';
+                        return coating.toLowerCase().includes(currentFilters.coating.toLowerCase());
+                    });
+                }
+                
+                // Price filter
+                if (currentFilters.price !== 'all') {
+                    if (currentFilters.price === '0-1000') {
+                        filtered = filtered.filter(product => product.price <= 1000);
+                    } else if (currentFilters.price === '1000-5000') {
+                        filtered = filtered.filter(product => product.price >= 1000 && product.price <= 5000);
+                    } else if (currentFilters.price === '5000-10000') {
+                        filtered = filtered.filter(product => product.price >= 5000 && product.price <= 10000);
+                    } else if (currentFilters.price === '10000+') {
+                        filtered = filtered.filter(product => product.price >= 10000);
+                    }
+                }
+                
+                // Apply sort
+                applySort(filtered);
+            }
+            
+            // Apply sorting
+            function applySort(productsToSort) {
+                const sortSelect = document.getElementById('sort-select');
+                const sortValue = sortSelect ? sortSelect.value : 'default';
+                let sortedProducts = [...productsToSort];
+                
+                if (sortValue === 'price-asc') {
+                    sortedProducts.sort((a, b) => a.price - b.price);
+                } else if (sortValue === 'price-desc') {
+                    sortedProducts.sort((a, b) => b.price - a.price);
+                } else if (sortValue === 'name-asc') {
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
+                } else if (sortValue === 'name-desc') {
+                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name, 'uk'));
+                }
+                
+                renderProducts(sortedProducts);
             }
             
             // Initialize with all products
             if (typeof products !== 'undefined' && products.length > 0) {
-                renderProducts(products);
-                
-                // Update filter buttons with actual categories
+                // Update category filters
                 const categories = getAllCategories();
-                const categoryFilterGroup = document.querySelector('.filter-group:first-of-type .filter-buttons');
+                const categoryFilterGroup = document.getElementById('category-filters');
                 if (categoryFilterGroup) {
-                    categoryFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all">Всі</button>';
+                    categoryFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all" data-type="category">Всі</button>';
                     categories.forEach(category => {
                         const btn = document.createElement('button');
                         btn.className = 'filter-btn';
                         btn.setAttribute('data-filter', category);
+                        btn.setAttribute('data-type', 'category');
                         btn.textContent = category;
                         categoryFilterGroup.appendChild(btn);
                     });
                 }
                 
-                // Filter functionality
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                filterButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        filterButtons.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        
-                        const filter = btn.getAttribute('data-filter');
-                        let filteredProducts = filter === 'all' ? products : getProductsByCategory(filter);
-                        
-                        // Apply current sort
-                        applySort(filteredProducts);
+                // Update coating filters
+                const coatings = [...new Set(products.map(p => p.coating).filter(c => c))];
+                const coatingFilterGroup = document.getElementById('coating-filters');
+                if (coatingFilterGroup) {
+                    coatingFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all" data-type="coating">Всі</button>';
+                    coatings.forEach(coating => {
+                        const btn = document.createElement('button');
+                        btn.className = 'filter-btn';
+                        btn.setAttribute('data-filter', coating);
+                        btn.setAttribute('data-type', 'coating');
+                        btn.textContent = coating;
+                        coatingFilterGroup.appendChild(btn);
                     });
+                }
+                
+                // Search input listener
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        currentFilters.search = e.target.value;
+                        filterProducts();
+                    });
+                }
+                
+                // Filter buttons listeners
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('filter-btn')) {
+                        const filterType = e.target.getAttribute('data-type');
+                        const filterValue = e.target.getAttribute('data-filter');
+                        
+                        if (filterType) {
+                            // Update active state within the same filter group
+                            const group = e.target.parentElement;
+                            group.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                            e.target.classList.add('active');
+                            
+                            // Update filter state
+                            if (filterType === 'category') {
+                                currentFilters.category = filterValue;
+                            } else if (filterType === 'coating') {
+                                currentFilters.coating = filterValue;
+                            } else if (filterType === 'price') {
+                                currentFilters.price = filterValue;
+                            }
+                            
+                            filterProducts();
+                        }
+                    }
                 });
                 
-                // Sort functionality
+                // Sort select listener
                 const sortSelect = document.getElementById('sort-select');
                 if (sortSelect) {
                     sortSelect.addEventListener('change', () => {
-                        const activeFilter = document.querySelector('.filter-btn.active');
-                        const filter = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
-                        let filteredProducts = filter === 'all' ? products : getProductsByCategory(filter);
-                        applySort(filteredProducts);
+                        filterProducts();
                     });
                 }
                 
-                function applySort(productsToSort) {
-                    const sortValue = sortSelect ? sortSelect.value : 'default';
-                    let sortedProducts = [...productsToSort];
-                    
-                    if (sortValue === 'price-asc') {
-                        sortedProducts.sort((a, b) => a.price - b.price);
-                    } else if (sortValue === 'price-desc') {
-                        sortedProducts.sort((a, b) => b.price - a.price);
-                    }
-                    
-                    renderProducts(sortedProducts);
+                // Reset filters button
+                const resetButton = document.getElementById('reset-filters');
+                if (resetButton) {
+                    resetButton.addEventListener('click', () => {
+                        currentFilters = {
+                            search: '',
+                            category: 'all',
+                            coating: 'all',
+                            price: 'all'
+                        };
+                        
+                        if (searchInput) searchInput.value = '';
+                        
+                        // Reset all filter buttons to active state for "all"
+                        document.querySelectorAll('.filter-buttons').forEach(group => {
+                            group.querySelectorAll('.filter-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                                if (btn.getAttribute('data-filter') === 'all') {
+                                    btn.classList.add('active');
+                                }
+                            });
+                        });
+                        
+                        if (sortSelect) sortSelect.value = 'default';
+                        
+                        filterProducts();
+                    });
                 }
+                
+                // Initial render
+                filterProducts();
                 
                 // Add to cart functionality
                 const addToCartButtons = document.querySelectorAll('.add-to-cart');
