@@ -1042,6 +1042,7 @@ button {
     transition: transform 0.3s ease;
     overflow-y: auto;
     pointer-events: auto;
+    z-index: 2;
 }
 
 .filter-sidebar.active .filter-sidebar-content {
@@ -1095,6 +1096,7 @@ button {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: auto;
+    z-index: 1;
 }
 
 .filter-sidebar.active .filter-sidebar-overlay {
