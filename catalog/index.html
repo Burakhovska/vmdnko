@@ -112,7 +112,33 @@
         <!-- Filters Section -->
         <section class="section filters-section">
             <div class="container">
-                <div class="filters">
+                <div class="filters-header">
+                    <button id="filter-toggle" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                        </svg>
+                        Фільтри
+                    </button>
+                    <div class="filter-results">
+                        <span id="results-count">Знайдено товарів: 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Sidebar -->
+        <div id="filter-sidebar" class="filter-sidebar">
+            <div class="filter-sidebar-content">
+                <div class="filter-sidebar-header">
+                    <h3 class="filter-sidebar-title">Фільтри</h3>
+                    <button id="filter-close" class="filter-close-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter-sidebar-body">
                     <div class="filter-group">
                         <h3 class="filter-title">Пошук</h3>
                         <input type="text" id="search-input" class="search-input" placeholder="Пошук за назвою...">
@@ -154,11 +180,9 @@
                         <button id="reset-filters" class="btn btn-outline btn-sm">Скинути фільтри</button>
                     </div>
                 </div>
-                <div class="filter-results">
-                    <span id="results-count">Знайдено товарів: 0</span>
-                </div>
             </div>
-        </section>
+            <div class="filter-sidebar-overlay" id="filter-overlay"></div>
+        </div>
 
         <!-- Products Grid -->
         <section class="section products-section">
@@ -418,6 +442,45 @@
                 renderProducts(sortedProducts);
             }
             
+            // Filter sidebar toggle
+            const filterToggle = document.getElementById('filter-toggle');
+            const filterSidebar = document.getElementById('filter-sidebar');
+            const filterClose = document.getElementById('filter-close');
+            const filterOverlay = document.getElementById('filter-overlay');
+
+            function openFilterSidebar() {
+                if (filterSidebar) {
+                    filterSidebar.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeFilterSidebar() {
+                if (filterSidebar) {
+                    filterSidebar.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (filterToggle) {
+                filterToggle.addEventListener('click', openFilterSidebar);
+            }
+
+            if (filterClose) {
+                filterClose.addEventListener('click', closeFilterSidebar);
+            }
+
+            if (filterOverlay) {
+                filterOverlay.addEventListener('click', closeFilterSidebar);
+            }
+
+            // Close sidebar on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeFilterSidebar();
+                }
+            });
+
             // Initialize with all products
             if (typeof products !== 'undefined' && products.length > 0) {
                 // Update category filters
