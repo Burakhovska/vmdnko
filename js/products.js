@@ -1019,7 +1019,7 @@ const products = [
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
         category: "Двері",
-        image: "RV-0005/Титан софттач.jpg",
+        image: "RV-0005/Титан софттач.png",
         hasModifications: true,
         modifications: [
             {
@@ -1029,7 +1029,7 @@ const products = [
                 price: 5414,
                 colors: ["Титан софттач", "Білий"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["RV-0005/Титан софттач.jpg", "RV-0005/Білий.jpg"]
+                images: ["RV-0005/Титан софттач.png", "RV-0005/Білий.jpg"]
             },
             {
                 id: "RV-0005-2",
@@ -1283,7 +1283,7 @@ const products = [
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
         category: "Двері",
-        image: "RV-00011/Білий.jpg",
+        image: "RV-00011/Білий.jpeg",
         hasModifications: true,
         modifications: [
             {
@@ -1293,7 +1293,7 @@ const products = [
                 price: 4430,
                 colors: ["Білий"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["RV-00011/Білий.jpg"]
+                images: ["RV-00011/Білий.jpeg"]
             },
             {
                 id: "RV-00011-2",
@@ -1302,7 +1302,7 @@ const products = [
                 price: 4628,
                 colors: ["Білий"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["RV-00011/Білий.jpg"]
+                images: ["RV-00011/Білий.jpeg"]
             },
             {
                 id: "RV-00011-3",
@@ -1311,7 +1311,7 @@ const products = [
                 price: 4002,
                 colors: ["Білий УМ"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["RV-00011/Білий УМ.jpg"]
+                images: ["RV-00011/Білий УМ.jpeg"]
             },
             {
                 id: "RV-00011-4",
@@ -1320,7 +1320,7 @@ const products = [
                 price: 4208,
                 colors: ["Білий УМ"],
                 sizes: ["600*2000", "700*2000", "800*2000", "900*2000"],
-                images: ["RV-00011/Білий УМ.jpg"]
+                images: ["RV-00011/Білий УМ.jpeg"]
             }
         ]
     }
