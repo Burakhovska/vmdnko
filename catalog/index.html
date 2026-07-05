@@ -532,16 +532,17 @@
                 
                 // Filter buttons listeners
                 document.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('filter-btn')) {
+                    const filterBtn = e.target.closest('.filter-btn');
+                    if (filterBtn) {
                         e.stopPropagation(); // Prevent event from bubbling to overlay
-                        const filterType = e.target.getAttribute('data-type');
-                        const filterValue = e.target.getAttribute('data-filter');
+                        const filterType = filterBtn.getAttribute('data-type');
+                        const filterValue = filterBtn.getAttribute('data-filter');
                         
                         if (filterType) {
                             // Update active state within the same filter group
-                            const group = e.target.parentElement;
+                            const group = filterBtn.parentElement;
                             group.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                            e.target.classList.add('active');
+                            filterBtn.classList.add('active');
                             
                             // Update filter state
                             if (filterType === 'category') {
