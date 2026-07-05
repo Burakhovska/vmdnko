@@ -507,11 +507,12 @@
                 }
                 
                 // Update coating filters
-                const coatings = [...new Set(products.map(p => p.coating).filter(c => c))];
+                const allCoatings = products.map(p => p.coating).filter(c => c);
+                const uniqueCoatings = [...new Set(allCoatings.flatMap(c => c.split(',').map(s => s.trim())))];
                 const coatingFilterGroup = document.getElementById('coating-filters');
                 if (coatingFilterGroup) {
                     coatingFilterGroup.innerHTML = '<button class="filter-btn active" data-filter="all" data-type="coating">Всі</button>';
-                    coatings.forEach(coating => {
+                    uniqueCoatings.forEach(coating => {
                         const btn = document.createElement('button');
                         btn.className = 'filter-btn';
                         btn.setAttribute('data-filter', coating);
