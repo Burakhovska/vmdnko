@@ -359,9 +359,14 @@
                         }
                     })
                     .then(response => {
+                        console.log('Response status:', response.status);
+                        console.log('Response ok:', response.ok);
                         if (response.ok) {
                             window.location.href = 'thanks.html';
                         } else {
+                            response.json().then(data => {
+                                console.error('Formspree error:', data);
+                            });
                             alert('Помилка відправки. Спробуйте ще раз.');
                             submitBtn.textContent = originalText;
                             submitBtn.disabled = false;
