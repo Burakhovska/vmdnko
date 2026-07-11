@@ -149,6 +149,12 @@
                             <button class="filter-btn active" data-filter="all">Всі</button>
                         </div>
                     </div>
+                    <div class="filter-group" id="subcategory-filter-group" style="display: none;">
+                        <h3 class="filter-title">Підкатегорія</h3>
+                        <div class="filter-buttons" id="subcategory-filters">
+                            <button class="filter-btn active" data-filter="all">Всі</button>
+                        </div>
+                    </div>
                     <div class="filter-group">
                         <h3 class="filter-title">Покриття</h3>
                         <div class="filter-buttons" id="coating-filters">
@@ -317,6 +323,7 @@
             let currentFilters = {
                 search: '',
                 category: 'all',
+                subcategory: 'all',
                 coating: 'all',
                 price: 'all'
             };
@@ -396,6 +403,11 @@
                 // Category filter
                 if (currentFilters.category !== 'all') {
                     filtered = filtered.filter(product => product.category === currentFilters.category);
+                }
+                
+                // Subcategory filter
+                if (currentFilters.subcategory !== 'all') {
+                    filtered = filtered.filter(product => product.subcategory === currentFilters.subcategory);
                 }
                 
                 // Coating filter
@@ -570,6 +582,10 @@
                     // Update filter state
                     if (filterType === 'category') {
                         currentFilters.category = filterValue;
+                        currentFilters.subcategory = 'all'; // Reset subcategory when category changes
+                        updateSubcategoryFilters(filterValue);
+                    } else if (filterType === 'subcategory') {
+                        currentFilters.subcategory = filterValue;
                     } else if (filterType === 'coating') {
                         currentFilters.coating = filterValue;
                     } else if (filterType === 'price') {
@@ -578,6 +594,53 @@
                     
                     console.log('Current filters:', currentFilters);
                     filterProducts();
+                }
+                
+                // Update subcategory filters based on selected category
+                function updateSubcategoryFilters(category) {
+                    const subcategoryFilterGroup = document.getElementById('subcategory-filter-group');
+                    const subcategoryFilterButtons = document.getElementById('subcategory-filters');
+                    
+                    if (category === 'all' || category === 'Двері') {
+                        subcategoryFilterGroup.style.display = 'none';
+                        currentFilters.subcategory = 'all';
+                        return;
+                    }
+                    
+                    // Get unique subcategories for this category
+                    const subcategories = [...new Set(products.filter(p => p.category === category).map(p => p.subcategory).filter(s => s))];
+                    
+                    if (subcategories.length > 0) {
+                        subcategoryFilterGroup.style.display = 'block';
+                        subcategoryFilterButtons.innerHTML = '';
+                        
+                        const allSubcategoryBtn = document.createElement('button');
+                        allSubcategoryBtn.className = 'filter-btn active';
+                        allSubcategoryBtn.setAttribute('data-filter', 'all');
+                        allSubcategoryBtn.setAttribute('data-type', 'subcategory');
+                        allSubcategoryBtn.textContent = 'Всі';
+                        allSubcategoryBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            handleFilterClick('subcategory', 'all', allSubcategoryBtn);
+                        });
+                        subcategoryFilterButtons.appendChild(allSubcategoryBtn);
+                        
+                        subcategories.forEach(subcategory => {
+                            const btn = document.createElement('button');
+                            btn.className = 'filter-btn';
+                            btn.setAttribute('data-filter', subcategory);
+                            btn.setAttribute('data-type', 'subcategory');
+                            btn.textContent = subcategory;
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                handleFilterClick('subcategory', subcategory, btn);
+                            });
+                            subcategoryFilterButtons.appendChild(btn);
+                        });
+                    } else {
+                        subcategoryFilterGroup.style.display = 'none';
+                        currentFilters.subcategory = 'all';
+                    }
                 }
                 
                 // Search input listener
@@ -623,6 +686,7 @@
                         currentFilters = {
                             search: '',
                             category: 'all',
+                            subcategory: 'all',
                             coating: 'all',
                             price: 'all'
                         };
@@ -638,6 +702,12 @@
                                 }
                             });
                         });
+                        
+                        // Hide subcategory filter group
+                        const subcategoryFilterGroup = document.getElementById('subcategory-filter-group');
+                        if (subcategoryFilterGroup) {
+                            subcategoryFilterGroup.style.display = 'none';
+                        }
                         
                         if (sortSelect) sortSelect.value = 'default';
                         

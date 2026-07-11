@@ -7,7 +7,8 @@ const products = [
         color: "Титан софттач",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "titan_softtouch.png"
     },
     {
@@ -18,7 +19,8 @@ const products = [
         color: "сірий ум",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "siryi_um.png"
     },
     {
@@ -29,7 +31,8 @@ const products = [
         color: "Дуб антік",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "dub_antik.png"
     },
     {
@@ -40,7 +43,8 @@ const products = [
         color: "Дуб Вотан",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "dub_votan.png"
     },
     {
@@ -51,7 +55,8 @@ const products = [
         color: "Кашемір",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "kashemir.png"
     },
     {
@@ -62,7 +67,8 @@ const products = [
         color: "Дуб кам'яний",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "dub_kamyanyy.png"
     },
     {
@@ -73,7 +79,8 @@ const products = [
         color: "Фанера палена",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "fanera_palena.png"
     },
     {
@@ -84,7 +91,8 @@ const products = [
         color: "Білий ультрамат",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "bilyy_ultramat.png"
     },
     {
@@ -95,7 +103,8 @@ const products = [
         color: "Дуб болтон",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "dub_bolton.png"
     },
     {
@@ -106,7 +115,8 @@ const products = [
         color: "Рустік блан",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "rustik_blan.png"
     },
     {
@@ -117,7 +127,8 @@ const products = [
         color: "Рустік золотий",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "rustik_zolotyy.png"
     },
     {
@@ -128,7 +139,8 @@ const products = [
         color: "Рустік авіньон",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "rustik_avignon.png"
     },
     {
@@ -139,7 +151,8 @@ const products = [
         color: "Ялина карпатська",
         size: "602 х 602 х 17",
         coating: "ПВХ",
-        category: "Квадрат",
+        category: "Акустичні панелі",
+        subcategory: "Квадрат",
         image: "yalyna_karpatska.png"
     },
     {
@@ -150,7 +163,8 @@ const products = [
         color: "Титан софттач",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "titan_softtouch.png"
     },
     {
@@ -161,7 +175,8 @@ const products = [
         color: "сірий ум",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "siryi_um.png"
     },
     {
@@ -172,7 +187,8 @@ const products = [
         color: "Дуб антік",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "dub_antik.png"
     },
     {
@@ -183,7 +199,8 @@ const products = [
         color: "Дуб Вотан",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "dub_votan.png"
     },
     {
@@ -194,7 +211,8 @@ const products = [
         color: "Кашемір",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "kashemir.png"
     },
     {
@@ -205,7 +223,8 @@ const products = [
         color: "Дуб кам'яний",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "dub_kamyanyy.png"
     },
     {
@@ -216,7 +235,8 @@ const products = [
         color: "Фанера палена",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "fanera_palena.png"
     },
     {
@@ -227,7 +247,8 @@ const products = [
         color: "Білий ультрамат",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "bilyy_ultramat.png"
     },
     {
@@ -238,7 +259,8 @@ const products = [
         color: "Дуб болтон",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "dub_bolton.png"
     },
     {
@@ -249,7 +271,8 @@ const products = [
         color: "Рустік блан",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "rustik_blan.png"
     },
     {
@@ -260,7 +283,8 @@ const products = [
         color: "Рустік золотий",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "rustik_zolotyy.png"
     },
     {
@@ -271,7 +295,8 @@ const products = [
         color: "Рустік авіньон",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "rustik_avignon.png"
     },
     {
@@ -282,7 +307,8 @@ const products = [
         color: "Ялина карпатська",
         size: "301 х 2780 х 17",
         coating: "ПВХ",
-        category: "Смуги",
+        category: "Акустичні панелі",
+        subcategory: "Смуги",
         image: "yalyna_karpatska.png"
     },
     {
@@ -293,7 +319,8 @@ const products = [
         color: "Дуб Болтон, Сканді, Елегансія Меджик, дуб Вотан, дуб Антік, Білий Ультрамат (УМ), Сірий УМ, Чорний УМ",
         size: "117 х 2780 х 12 мм",
         coating: "ПВХ",
-        category: "Стінові панелі",
+        category: "Акустичні панелі",
+        subcategory: "Стінові панелі",
         image: "MDF-TST-001.jpg"
     },
     {
@@ -304,7 +331,8 @@ const products = [
         color: "ДУБ СОНОМА",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соти",
+        category: "Акустичні панелі",
+        subcategory: "Соти",
         image: "dub_sonoma.png"
     },
     {
@@ -315,7 +343,8 @@ const products = [
         color: "КЛЕН",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соти",
+        category: "Акустичні панелі",
+        subcategory: "Соти",
         image: "klen.png"
     },
     {
@@ -326,7 +355,8 @@ const products = [
         color: "ДУБ КРАФТ ЗОЛОТИЙ",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соти",
+        category: "Акустичні панелі",
+        subcategory: "Соти",
         image: "dub_kraft_zolotyy.jpg"
     },
     {
@@ -337,7 +367,8 @@ const products = [
         color: "БЕЖ",
         size: "537 х 620 х 18 мм",
         coating: "ПВХ",
-        category: "Соти",
+        category: "Акустичні панелі",
+        subcategory: "Соти",
         image: "bezh.png"
     },
     {
@@ -348,7 +379,8 @@ const products = [
         color: "ВСІ КОЛЬОРИ З АСОРТИМЕНТУ",
         size: "",
         coating: "ПВХ",
-        category: "Комплектуючі",
+        category: "Акустичні панелі",
+        subcategory: "Комплектуючі",
         image: "start-finish.jpg"
     },
     {
