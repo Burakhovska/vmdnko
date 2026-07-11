@@ -175,8 +175,8 @@
                     <!-- Contact Form -->
                     <div class="contact-form-wrapper">
                         <h2 class="contact-form-title">Форма Зворотного Зв'язку</h2>
-                        <form class="contact-form" action="https://formspree.io/f/mjgnbwky" method="POST">
-                            <input type="hidden" name="_next" value="https://www.vmdnko.com.ua/contacts/thanks.html">
+                        <form class="contact-form" id="contact-form">
+                            <input type="hidden" name="_subject" value="Нове повідомлення з сайту VMDNKO">
                             <div class="form-group">
                                 <label for="name">Ім'я *</label>
                                 <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
@@ -317,6 +317,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Cookie banner functionality
             const cookieBanner = document.getElementById('cookie-banner');
             const acceptBtn = document.getElementById('cookie-accept');
             const declineBtn = document.getElementById('cookie-decline');
@@ -336,6 +337,44 @@
                 localStorage.setItem('cookieChoice', 'declined');
                 cookieBanner.classList.remove('show');
             });
+            
+            // Contact form submission via AJAX
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Відправка...';
+                    submitBtn.disabled = true;
+                    
+                    fetch('https://formspree.io/f/mjgnbwky', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = 'thanks.html';
+                        } else {
+                            alert('Помилка відправки. Спробуйте ще раз.');
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Помилка відправки. Спробуйте ще раз.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
         });
     </script>
 </body>
