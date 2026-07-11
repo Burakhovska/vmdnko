@@ -405,9 +405,10 @@
                     formData.append('comment', document.getElementById('comment').value);
                     formData.append('order_items', orderItemsText);
                     formData.append('order_total', orderTotal + ' грн');
+                    formData.append('_subject', 'Нове замовлення з сайту VMDNKO');
                     
                     const xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'https://formspree.io/f/xkoeproa', true);
+                    xhr.open('POST', 'https://formspree.io/f/mjgnbwky', true);
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.setRequestHeader('Accept', 'application/json');
                     xhr.onreadystatechange = function() {
