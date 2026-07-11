@@ -489,6 +489,10 @@
                 }
             });
 
+            // Check URL parameters for pre-filtering
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            
             // Initialize with all products
             if (typeof products !== 'undefined' && products.length > 0) {
                 // Update category filters
@@ -599,6 +603,16 @@
                 if (sortSelect) {
                     sortSelect.addEventListener('change', () => {
                         filterProducts();
+                    });
+                }
+                
+                // Apply category filter from URL parameter
+                if (categoryParam) {
+                    const categoryButtons = document.querySelectorAll('#category-filters .filter-btn');
+                    categoryButtons.forEach(btn => {
+                        if (btn.getAttribute('data-filter') === categoryParam) {
+                            handleFilterClick('category', categoryParam, btn);
+                        }
                     });
                 }
                 
