@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дякуємо за звернення - VMDNKO</title>
+    <meta name="description" content="Дякуємо за ваше звернення! Ми зв'яжемося з вами найближчим часом.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../" class="logo">
+                    <svg width="120" height="40" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="35" font-family="Montserrat" font-weight="700" font-size="28" fill="#C9A962">VMDNKO</text>
+                        <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
+                    </svg>
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../">Головна</a></li>
+                        <li><a href="../catalog/">Каталог</a></li>
+                        <li><a href="../about/">Про нас</a></li>
+                        <li><a href="./">Контакти</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="thanks-message">
+                    <div class="thanks-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" stroke="#C9A962" stroke-width="4"/>
+                            <path d="M25 40L35 50L55 30" stroke="#C9A962" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h1 class="thanks-title">Дякуємо за звернення!</h1>
+                    <p class="thanks-text">Ваше повідомлення успішно відправлено. Ми зв'яжемося з вами найближчим часом.</p>
+                    <a href="../" class="btn btn-primary">Повернутися на головну</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="120" height="40" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="0" y="35" font-family="Montserrat" font-weight="700" font-size="28" fill="#C9A962">VMDNKO</text>
+                            <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <p class="footer-text">Преміальні настінні панелі та двері для сучасного інтер'єру</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Навігація</h4>
+                    <ul class="footer-links">
+                        <li><a href="../">Головна</a></li>
+                        <li><a href="../catalog/">Каталог</a></li>
+                        <li><a href="../about/">Про нас</a></li>
+                        <li><a href="./">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Контакти</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+380939560057">+380 93 956 0057</a></li>
+                        <li><a href="mailto:vmdnk@outlook.com">vmdnk@outlook.com</a></li>
+                        <li>Київ, Україна</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VMDNKO. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .thanks-message {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .thanks-icon {
+            margin-bottom: 30px;
+        }
+
+        .thanks-title {
+            font-size: 2.5rem;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .thanks-text {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .thanks-message {
+                padding: 40px 20px;
+            }
+
+            .thanks-title {
+                font-size: 2rem;
+            }
+
+            .thanks-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>
