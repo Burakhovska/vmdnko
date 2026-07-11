@@ -506,6 +506,18 @@ button {
     box-shadow: 0 6px 24px rgba(201, 169, 98, 0.4);
 }
 
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn-primary:disabled {
+    background: var(--color-gray);
+    box-shadow: none;
+    transform: none;
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--color-gold);
