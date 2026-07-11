@@ -266,7 +266,7 @@
                     const itemTotal = item.price * item.quantity;
                     total += itemTotal;
                     totalItems += item.quantity;
-                    const imageUrl = item.image ? `images/${item.image}` : null;
+                    const imageUrl = item.image ? `../images/${item.image}` : null;
                     
                     return `
                         <div class="cart-item" data-id="${item.id}">
