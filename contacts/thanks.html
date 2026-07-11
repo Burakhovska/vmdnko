@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дякуємо за звернення - VMDNKO</title>
+    <meta name="robots" content="index, follow">
     <meta name="description" content="Дякуємо за ваше звернення! Ми зв'яжемося з вами найближчим часом.">
+    <meta name="author" content="VMDNKO">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.vmdnko.com.ua/contacts/thanks.html">
+    <meta property="og:title" content="Дякуємо за звернення - VMDNKO">
+    <meta property="og:description" content="Дякуємо за ваше звернення! Ми зв'яжемося з вами найближчим часом.">
+    <meta property="og:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
+    <meta property="og:locale" content="uk_UA">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.vmdnko.com.ua/contacts/thanks.html">
+    <meta name="twitter:title" content="Дякуємо за звернення - VMDNKO">
+    <meta name="twitter:description" content="Дякуємо за ваше звернення! Ми зв'яжемося з вами найближчим часом.">
+    <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.vmdnko.com.ua/contacts/thanks.html">
+    
+    <title>Дякуємо за звернення - VMDNKO</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,22 +37,33 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="header-content">
+            <nav class="nav">
                 <a href="../" class="logo">
-                    <svg width="120" height="40" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="0" y="35" font-family="Montserrat" font-weight="700" font-size="28" fill="#C9A962">VMDNKO</text>
-                        <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
-                    </svg>
+                    <img src="../images/logo.png" alt="VMDNKO" width="230" height="50">
                 </a>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="../">Головна</a></li>
-                        <li><a href="../catalog/">Каталог</a></li>
-                        <li><a href="../about/">Про нас</a></li>
-                        <li><a href="./">Контакти</a></li>
-                    </ul>
-                </nav>
-            </div>
+                <ul class="nav-menu">
+                    <li><a href="../" class="nav-link">Головна</a></li>
+                    <li><a href="../catalog/" class="nav-link">Каталог</a></li>
+                    <li><a href="../about/" class="nav-link">Про нас</a></li>
+                    <li><a href="../contacts/" class="nav-link active">Контакти</a></li>
+                    <li><a href="../cart/" class="nav-link cart-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </nav>
         </div>
     </header>
 
@@ -76,10 +110,35 @@
                 </div>
                 <div class="footer-section">
                     <h4 class="footer-title">Контакти</h4>
+                    <ul class="footer-contacts">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            +380 93 956 0057
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            vmdnk@outlook.com
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Київ, Україна
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Юридична інформація</h4>
                     <ul class="footer-links">
-                        <li><a href="tel:+380939560057">+380 93 956 0057</a></li>
-                        <li><a href="mailto:vmdnk@outlook.com">vmdnk@outlook.com</a></li>
-                        <li>Київ, Україна</li>
+                        <li><a href="../cookie-policy/">Політика Cookie</a></li>
+                        <li><a href="../privacy-policy/">Політика Конфіденційності</a></li>
+                        <li><a href="../terms-and-conditions/">Умови Використання</a></li>
                     </ul>
                 </div>
             </div>
@@ -88,6 +147,62 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                Ми використовуємо cookie для покращення вашого досвіду на сайті. Продовжуючи перегляд, ви погоджуєтесь з нашою <a href="../cookie-policy/">політикою cookie</a>.
+            </div>
+            <div class="cookie-banner-buttons">
+                <button class="btn btn-outline" id="cookie-decline">Відхилити</button>
+                <button class="btn btn-primary" id="cookie-accept">Прийняти</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cookie banner functionality
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
+            
+            const cookieChoice = localStorage.getItem('cookieChoice');
+            
+            if (!cookieChoice) {
+                cookieBanner.classList.add('show');
+            }
+            
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'accepted');
+                cookieBanner.classList.remove('show');
+            });
+            
+            declineBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieChoice', 'declined');
+                cookieBanner.classList.remove('show');
+            });
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.classList.toggle('active');
+                });
+            }
+            
+            // Cart count update
+            const cartCount = document.getElementById('cart-count');
+            if (cartCount) {
+                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                cartCount.textContent = cart.length;
+            }
+        });
+    </script>
 
     <style>
         .thanks-message {
