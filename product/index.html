@@ -560,7 +560,7 @@
                         const similarProducts = products.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
                         const similarGrid = document.getElementById('similar-products-grid');
                         similarProducts.forEach(similarProduct => {
-                            const similarImageUrl = similarProduct.image ? `images/${similarProduct.image}` : null;
+                            const similarImageUrl = similarProduct.image ? `../images/${similarProduct.image}` : null;
                             const card = document.createElement('div');
                             card.className = 'card product-card';
                             card.style.opacity = '1';
