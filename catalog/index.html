@@ -205,7 +205,10 @@
                 <div class="cta-content">
                     <h2 class="cta-title">Не Знайшли Що Шукали?</h2>
                     <p class="cta-text">Зв'яжіться з нами для індивідуального замовлення</p>
-                    <a href="../contacts/" class="btn btn-primary">Залишити Заявку</a>
+                    <div class="cta-buttons">
+                        <a href="../contacts/" class="btn btn-primary">Залишити Заявку</a>
+                        <button class="btn btn-secondary open-calculation-modal">Замовити розрахунок</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -309,6 +312,64 @@
             });
         });
     </script>
+
+    <!-- Calculation Modal -->
+    <div class="calculation-modal" id="calculation-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title">Замовити розрахунок</h2>
+                <p class="modal-subtitle">Заповніть форму і ми зв'яжемося з вами</p>
+            </div>
+            <form class="calculation-form" id="calculation-form">
+                <div class="form-group">
+                    <label for="calc-name">Ім'я *</label>
+                    <input type="text" id="calc-name" name="name" required placeholder="Ваше ім'я">
+                </div>
+                <div class="form-group">
+                    <label for="calc-phone">Телефон *</label>
+                    <input type="tel" id="calc-phone" name="phone" required placeholder="+380 XX XXX XX XX">
+                </div>
+                <div class="form-group">
+                    <label for="calc-type">Тип дверей</label>
+                    <select id="calc-type" name="type">
+                        <option value="">Оберіть тип</option>
+                        <option value="Акустичні панелі">Акустичні панелі</option>
+                        <option value="Двері">Двері</option>
+                        <option value="Інше">Інше</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="calc-size">Розміри</label>
+                    <input type="text" id="calc-size" name="size" placeholder="Наприклад: 2000x800 мм">
+                </div>
+                <div class="form-group">
+                    <label for="calc-comment">Коментар</label>
+                    <textarea id="calc-comment" name="comment" rows="3" placeholder="Додаткова інформація"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Надіслати</button>
+            </form>
+            <div class="modal-success" id="modal-success" style="display: none;">
+                <div class="success-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C9A962" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 class="success-title">Дякуємо!</h3>
+                <p class="success-text">Ваша заявка успішно відправлена. Ми зв'яжемося з вами найближчим часом.</p>
+                <button class="btn btn-secondary btn-full" id="modal-close-success">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/calculation-modal.js"></script>
 
     <script src="../js/products.js"></script>
     <script src="../js/main.js"></script>
