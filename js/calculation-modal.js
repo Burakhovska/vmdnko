@@ -92,35 +92,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Send data to server
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'send.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        // Success
-                        if (form) {
-                            form.style.display = 'none';
-                        }
-                        if (modalSuccess) {
-                            modalSuccess.style.display = 'block';
-                        }
-                    } else {
-                        // Error
-                        alert('Помилка відправки. Спробуйте пізніше.');
+            // Disable submit button
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : 'Надіслати';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Відправка...';
+            }
+
+            // Send data to Formspree
+            fetch('https://formspree.io/f/xkoeproa', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Success
+                    if (form) {
+                        form.style.display = 'none';
+                    }
+                    if (modalSuccess) {
+                        modalSuccess.style.display = 'block';
+                    }
+                } else {
+                    // Error
+                    response.json().then(data => {
+                        console.error('Formspree error:', data);
+                    });
+                    alert('Помилка відправки. Спробуйте ще раз.');
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
                     }
                 }
-            };
-
-            xhr.onerror = function() {
-                alert('Помилка з\'єднання. Спробуйте пізніше.');
-            };
-
-            // Send form data
-            const params = new URLSearchParams(formData).toString();
-            xhr.send(params);
+            }).catch(error => {
+                console.error('Fetch error:', error);
+                alert('Помилка з\'єднання. Спробуйте ще раз.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
         });
     }
 });
