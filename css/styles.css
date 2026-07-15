@@ -2279,6 +2279,79 @@ button {
     justify-content: center;
 }
 
+/* ===== Premium Floating CTA ===== */
+.floating-cta {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    background: linear-gradient(135deg, #C9A962 0%, #E8D5A3 50%, #C9A962 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 16px 24px;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(201, 169, 98, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: floatingPulse 3s ease-in-out infinite;
+}
+
+@keyframes floatingPulse {
+    0%, 100% {
+        transform: translateY(-50%) translateY(0);
+        box-shadow: 0 8px 32px rgba(201, 169, 98, 0.4),
+                    0 4px 16px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        transform: translateY(-50%) translateY(-8px);
+        box-shadow: 0 12px 40px rgba(201, 169, 98, 0.5),
+                    0 6px 20px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+.floating-cta:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 12px 48px rgba(201, 169, 98, 0.6),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    animation-play-state: paused;
+}
+
+.floating-cta:active {
+    transform: translateY(-50%) scale(0.98);
+    box-shadow: 0 4px 16px rgba(201, 169, 98, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.floating-cta-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #1a1a1a;
+}
+
+.floating-cta-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #1a1a1a;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.floating-cta-text {
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    white-space: nowrap;
+}
+
 /* Modal responsive styles */
 @media (max-width: 768px) {
     .modal-content {
@@ -2291,6 +2364,43 @@ button {
     }
     
     .modal-subtitle {
+        font-size: 14px;
+    }
+    
+    .floating-cta {
+        right: 20px;
+        top: auto;
+        bottom: 30px;
+        transform: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        animation: floatingPulseMobile 3s ease-in-out infinite;
+    }
+    
+    @keyframes floatingPulseMobile {
+        0%, 100% {
+            transform: translateY(0);
+            box-shadow: 0 8px 32px rgba(201, 169, 98, 0.4),
+                        0 4px 16px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        50% {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(201, 169, 98, 0.5),
+                        0 6px 20px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+    }
+    
+    .floating-cta:hover {
+        transform: scale(1.05);
+    }
+    
+    .floating-cta:active {
+        transform: scale(0.98);
+    }
+    
+    .floating-cta-text {
         font-size: 14px;
     }
 }

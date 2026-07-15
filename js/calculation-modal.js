@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.getElementById('modal-close');
     const modalCloseSuccess = document.getElementById('modal-close-success');
     const openButtons = document.querySelectorAll('.open-calculation-modal');
+    const floatingCta = document.getElementById('floating-cta');
     const form = document.getElementById('calculation-form');
     const modalSuccess = document.getElementById('modal-success');
 
@@ -36,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
     openButtons.forEach(button => {
         button.addEventListener('click', openModal);
     });
+
+    // Add click event to floating CTA
+    if (floatingCta) {
+        floatingCta.addEventListener('click', openModal);
+    }
 
     // Close modal on overlay click
     if (modalOverlay) {
