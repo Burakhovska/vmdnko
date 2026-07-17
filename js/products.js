@@ -391,7 +391,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0001/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -441,7 +441,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0002/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -491,7 +491,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0003/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -541,7 +541,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0004/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -591,7 +591,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0005/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -641,7 +641,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0006/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -673,7 +673,7 @@ const products = [
         color: "Білий супермат, Дуб болтон, Дуб стоун, Титан софттач, Горіх італійський, Білий УМ, Дуб ольс",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0008/Білий супермат.jpg",
         hasModifications: true,
         modifications: [
@@ -741,7 +741,7 @@ const products = [
         color: "Білий ультрамат",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0009/Білий Ультрамат.jpg",
         hasModifications: true,
         modifications: [
@@ -791,7 +791,7 @@ const products = [
         color: "Білий ультрамат, Колір під фарбу",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ, Фарба",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "DR-0010/Білий ультрамат.jpg",
         hasModifications: true,
         modifications: [
@@ -832,7 +832,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Ясень, Елегансія Магік, Рустік Авіньон, Сканді, Рустік блан, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0001/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -882,7 +882,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Рустік блан, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0002/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -932,7 +932,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, Сканді, Рустік блан, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0003/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -982,7 +982,7 @@ const products = [
         color: "Титан софтач, Білий, Сірий ум",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0004/Титан софтач.jpg",
         hasModifications: true,
         modifications: [
@@ -1032,7 +1032,7 @@ const products = [
         color: "Титан софтач, Білий, Білий УМ",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0005/Титан софттач.png",
         hasModifications: true,
         modifications: [
@@ -1082,7 +1082,7 @@ const products = [
         color: "Білий сатин, Титан софттач сатин, Титан софттач чорне, Білий чорне",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0006/Білий сатин.jpg",
         hasModifications: true,
         modifications: [
@@ -1114,7 +1114,7 @@ const products = [
         color: "Дуб болтон, сканді",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0007/Дуб болтон.jpg",
         hasModifications: true,
         modifications: [
@@ -1146,7 +1146,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, сканді, Рустік блан, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0008/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -1196,7 +1196,7 @@ const products = [
         color: "Білий, Бартекс грей, Дуб болтон, Елегансія Магік, Рустік Авіньон, сканді, Рустік блан, Білий УМ, Дуб грей, Дуб крем, Дуб шато",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-0009/Білий.jpg",
         hasModifications: true,
         modifications: [
@@ -1246,7 +1246,7 @@ const products = [
         color: "Білий сатин, Титан софттач сатин, Титан софттач чорне, Білий чорне, Білий УМ сатин, Білий Ум чорне",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-00010/Білий сатин.jpg",
         hasModifications: true,
         modifications: [
@@ -1296,7 +1296,7 @@ const products = [
         color: "Білий, Білий УМ",
         size: "600*2000, 700*2000, 800*2000, 900*2000",
         coating: "ППЛ, ПВХ",
-        category: "Двері",
+        category: "міжкімнатні двері",
         image: "RV-00011/Білий.jpeg",
         hasModifications: true,
         modifications: [
