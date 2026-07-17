@@ -13,7 +13,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.vmdnko.com.ua/product/">
-    <meta property="og:title" content="Панель "Квадрат" - VMDNKO">
+    <meta property="og:title" content="Панель &quot;Квадрат&quot; - VMDNKO">
     <meta property="og:description" content="Акустична панель Квадрат від VMDNKO. Ефективне шумопоглинання, геометричний дизайн для сучасного інтер'єру.">
     <meta property="og:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
     <meta property="og:locale" content="uk_UA">
@@ -21,7 +21,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.vmdnko.com.ua/product/">
-    <meta name="twitter:title" content="Панель "Квадрат" - VMDNKO">
+    <meta name="twitter:title" content="Панель &quot;Квадрат&quot; - VMDNKO">
     <meta name="twitter:description" content="Акустична панель Квадрат від VMDNKO. Ефективне шумопоглинання, геометричний дизайн.">
     <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
     
@@ -36,7 +36,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Structured Data -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="product-structured-data">
     {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -378,14 +378,50 @@
                         window.currentProduct = product;
                         
                         // Update page title
-                        document.title = `${product.name} - VMDNKO`;
+                        const pageTitle = `${product.name} - VMDNKO`;
+                        const plainDescription = (product.description || `${product.name} від VMDNKO`).replace(/<[^>]*>/g, '').trim();
+                        const canonicalUrl = new URL('/product/', window.location.origin);
+                        canonicalUrl.searchParams.set('id', product.id);
+                        const imageUrl = product.image ? `../images/${product.image}` : null;
+                        const absoluteImageUrl = imageUrl ? new URL(imageUrl, window.location.href).href : 'https://www.vmdnko.com.ua/images/og-image.jpg';
+
+                        document.title = pageTitle;
+                        document.querySelector('meta[name="description"]').content = plainDescription;
+                        document.querySelector('link[rel="canonical"]').href = canonicalUrl.href;
+                        document.querySelector('meta[property="og:url"]').content = canonicalUrl.href;
+                        document.querySelector('meta[property="og:title"]').content = pageTitle;
+                        document.querySelector('meta[property="og:description"]').content = plainDescription;
+                        document.querySelector('meta[property="og:image"]').content = absoluteImageUrl;
+                        document.querySelector('meta[name="twitter:url"]').content = canonicalUrl.href;
+                        document.querySelector('meta[name="twitter:title"]').content = pageTitle;
+                        document.querySelector('meta[name="twitter:description"]').content = plainDescription;
+                        document.querySelector('meta[name="twitter:image"]').content = absoluteImageUrl;
+                        document.getElementById('product-structured-data').textContent = JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'Product',
+                            name: product.name,
+                            description: plainDescription,
+                            image: absoluteImageUrl,
+                            sku: product.id,
+                            category: product.category,
+                            brand: {
+                                '@type': 'Brand',
+                                name: 'VMDNKO'
+                            },
+                            offers: {
+                                '@type': 'Offer',
+                                url: canonicalUrl.href,
+                                price: product.price,
+                                priceCurrency: 'UAH',
+                                availability: 'https://schema.org/InStock'
+                            }
+                        });
                         
                         // Update page header
                         document.getElementById('product-title').textContent = product.name;
                         document.getElementById('product-category').textContent = product.category;
                         
                         // Update main image
-                        const imageUrl = product.image ? `../images/${product.image}` : null;
                         const mainImage = document.getElementById('main-image');
                         if (imageUrl) {
                             mainImage.src = imageUrl;
@@ -667,6 +703,7 @@
                             similarGrid.appendChild(card);
                         });
                     } else {
+                        document.querySelector('meta[name="robots"]').content = 'noindex, follow';
                         document.getElementById('product-title').textContent = 'Товар не знайдено';
                         document.getElementById('product-category').textContent = '';
                     }
@@ -675,6 +712,7 @@
                     document.getElementById('product-title').textContent = 'Помилка завантаження даних';
                 }
             } else {
+                document.querySelector('meta[name="robots"]').content = 'noindex, follow';
                 document.getElementById('product-title').textContent = 'Товар не вказано';
                 document.getElementById('product-category').textContent = '';
             }
