@@ -623,7 +623,7 @@ button {
 }
 
 .category-bg-panels {
-    background: linear-gradient(135deg, var(--color-dark-wood) 0%, var(--color-graphite) 100%);
+    background: url('https://images.unsplash.com/photo-1722109997425-40f920848aed?fm=jpg&q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
 }
 
 .category-bg-panels::before {
@@ -633,17 +633,11 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 20px,
-        rgba(201, 169, 98, 0.1) 20px,
-        rgba(201, 169, 98, 0.1) 21px
-    );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
 }
 
 .category-bg-doors {
-    background: linear-gradient(135deg, var(--color-graphite) 0%, var(--color-black) 100%);
+    background: url('https://images.unsplash.com/photo-1558553066-1bb197c44dee?fm=jpg&q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
 }
 
 .category-bg-doors::before {
@@ -653,13 +647,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 20px,
-        rgba(201, 169, 98, 0.1) 20px,
-        rgba(201, 169, 98, 0.1) 21px
-    );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
 }
 
 .category-card:hover .category-bg {
