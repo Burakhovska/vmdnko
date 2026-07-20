@@ -9,32 +9,32 @@
     <meta name="author" content="VMDNKO">
     <meta name="theme-color" content="#1a1a1a">
     <meta name="google-site-verification" content="Mxs9iUj5CSEB0KKJXHjfT-jVfhD-r8QtLvDvG_IbJzg" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.vmdnko.com.ua/product/">
     <meta property="og:title" content="Панель &quot;Квадрат&quot; - VMDNKO">
     <meta property="og:description" content="Акустична панель Квадрат від VMDNKO. Ефективне шумопоглинання, геометричний дизайн для сучасного інтер'єру.">
-    <meta property="og:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
+    <meta property="og:image" content="https://www.vmdnko.com.ua/images/hero.jpg">
     <meta property="og:locale" content="uk_UA">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.vmdnko.com.ua/product/">
     <meta name="twitter:title" content="Панель &quot;Квадрат&quot; - VMDNKO">
     <meta name="twitter:description" content="Акустична панель Квадрат від VMDNKO. Ефективне шумопоглинання, геометричний дизайн.">
-    <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/og-image.jpg">
-    
+    <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/hero.jpg">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.vmdnko.com.ua/product/">
-    
+
     <title>Панель "Квадрат" - VMDNKO</title>
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json" id="product-structured-data">
     {
@@ -94,6 +94,7 @@
         <section class="page-header">
             <div class="container">
                 <h1 class="page-title" id="product-title">Завантаження...</h1>
+                <span class="premium-badge" id="premium-badge" style="display: none;">Premium</span>
                 <p class="page-subtitle" id="product-category">...</p>
             </div>
         </section>
@@ -104,8 +105,9 @@
                 <div class="product-layout">
                     <!-- Gallery -->
                     <div class="product-gallery">
-                        <div class="main-image-container">
+                        <div class="main-image-container" id="main-image-container">
                             <img id="main-image" src="images/placeholder.jpg" alt="Product Image" class="main-image" onerror="this.src='images/placeholder.jpg'">
+                            <div id="color-overlay" class="color-overlay"></div>
                         </div>
                             <h3 class="product-specs-title">Характеристики</h3>
                         <ul class="product-specs">
@@ -133,7 +135,7 @@
                         <h2 class="product-info-title">Опис</h2>
                         <p class="product-description" id="product-description">Завантаження...</p>
                         <p class="product-price" id="product-price">0 грн</p>
-                        
+
                         <!-- Modification selectors for doors -->
                         <div class="modification-selectors" id="modification-selectors" style="display: none;">
                             <div class="mod-selector-group">
@@ -161,12 +163,23 @@
                             </select>
                         </div>
 
-                    
+
 
                         <div class="product-actions">
                             <button class="btn btn-primary add-to-cart" id="add-to-cart-btn">В кошик</button>
                             <a href="../contacts/" class="btn btn-outline">Залишити Заявку</a>
                             <button class="btn btn-secondary open-calculation-modal">Замовити розрахунок</button>
+                        </div>
+
+                        <div class="ral-visualizer" id="ral-visualizer" style="display: none;">
+                            <h3 class="ral-visualizer-title">Візуалізація кольору RAL</h3>
+                            <div class="ral-row">
+                                <label class="ral-label" for="ral-select">RAL:</label>
+                                <select id="ral-select" class="ral-select">
+                                    <option value="">-- Оберіть RAL --</option>
+                                </select>
+                            </div>
+                            <p id="ral-info" class="ral-info">Оберіть колір, щоб побачити, як виглядатимуть двері</p>
                         </div>
                     </div>
                 </div>
@@ -264,18 +277,18 @@
             const cookieBanner = document.getElementById('cookie-banner');
             const acceptBtn = document.getElementById('cookie-accept');
             const declineBtn = document.getElementById('cookie-decline');
-            
+
             const cookieChoice = localStorage.getItem('cookieChoice');
-            
+
             if (!cookieChoice) {
                 cookieBanner.classList.add('show');
             }
-            
+
             acceptBtn.addEventListener('click', function() {
                 localStorage.setItem('cookieChoice', 'accepted');
                 cookieBanner.classList.remove('show');
             });
-            
+
             declineBtn.addEventListener('click', function() {
                 localStorage.setItem('cookieChoice', 'declined');
                 cookieBanner.classList.remove('show');
@@ -359,31 +372,40 @@
     <script src="../js/calculation-modal.js"></script>
     <script src="../js/products.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/ral-colors.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get product ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
-            
+
             console.log('Product ID:', productId);
             console.log('Products loaded:', typeof products !== 'undefined' ? products.length : 'undefined');
-            
+
             if (productId) {
                 if (typeof getProductById === 'function') {
                     const product = getProductById(productId);
                     console.log('Product found:', product);
-                    
+
                     if (product) {
                         // Store product globally for add to cart button
                         window.currentProduct = product;
-                        
+
+                        // Leave only calculation order for metal/technical/fire doors
+                        if (product.category === 'Металеві, технічні та протипожежні двері') {
+                            const addToCartBtn = document.getElementById('add-to-cart-btn');
+                            if (addToCartBtn) addToCartBtn.remove();
+                            const requestLink = document.querySelector('.product-actions .btn-outline[href="../contacts/"]');
+                            if (requestLink) requestLink.remove();
+                        }
+
                         // Update page title
                         const pageTitle = `${product.name} - VMDNKO`;
                         const plainDescription = (product.description || `${product.name} від VMDNKO`).replace(/<[^>]*>/g, '').trim();
                         const canonicalUrl = new URL('/product/', window.location.origin);
                         canonicalUrl.searchParams.set('id', product.id);
                         const imageUrl = product.image ? `../images/${product.image}` : null;
-                        const absoluteImageUrl = imageUrl ? new URL(imageUrl, window.location.href).href : 'https://www.vmdnko.com.ua/images/og-image.jpg';
+                        const absoluteImageUrl = imageUrl ? new URL(imageUrl, window.location.href).href : 'https://www.vmdnko.com.ua/images/hero.jpg';
 
                         document.title = pageTitle;
                         document.querySelector('meta[name="description"]').content = plainDescription;
@@ -416,11 +438,23 @@
                                 availability: 'https://schema.org/InStock'
                             }
                         });
-                        
+
                         // Update page header
                         document.getElementById('product-title').textContent = product.name;
                         document.getElementById('product-category').textContent = product.category;
-                        
+
+                        // Premium styling for MMD-001 and MMD-002
+                        const premiumBadge = document.getElementById('premium-badge');
+                        const productLayout = document.querySelector('.product-layout');
+                        const productInfo = document.querySelector('.product-info');
+                        const productGallery = document.querySelector('.product-gallery');
+                        if (product.id === 'MD-INS-002' || product.id === 'MD-INS-001') {
+                            if (product.id === 'MD-INS-001' && premiumBadge) premiumBadge.style.display = 'inline-block';
+                            if (productLayout) productLayout.classList.add('premium');
+                            if (productInfo) productInfo.classList.add('premium');
+                            if (productGallery) productGallery.classList.add('premium');
+                        }
+
                         // Update main image
                         const mainImage = document.getElementById('main-image');
                         if (imageUrl) {
@@ -433,15 +467,31 @@
                             noPhotoDiv.textContent = 'Немає фото';
                             mainImage.parentNode.appendChild(noPhotoDiv);
                         }
-                        
+
                         // Update product info
                         document.getElementById('product-description').innerHTML = product.description || 'Опис відсутній';
-                        document.getElementById('product-price').textContent = `${product.price} грн`;
+                        const productPrice = document.getElementById('product-price');
+                        if (product.category === 'Металеві, технічні та протипожежні двері') {
+                            productPrice.style.display = 'none';
+                        } else {
+                            productPrice.textContent = `${product.price} грн`;
+                        }
                         document.getElementById('product-id').textContent = product.id;
                         document.getElementById('product-color').textContent = product.color;
                         document.getElementById('product-size').textContent = product.size;
                         document.getElementById('product-coating').textContent = product.coating;
-                        
+
+                        // Update product specs or complectation
+                        const specsTitle = document.querySelector('.product-specs-title');
+                        const specsList = document.querySelector('.product-specs');
+                        if (product.complectation && product.complectation.length > 0 && specsTitle && specsList) {
+                            specsTitle.textContent = 'Комплектація';
+                            specsList.classList.add('complectation');
+                            specsList.innerHTML = product.complectation.map(item =>
+                                `<li><span class="spec-value">${item}</span></li>`
+                            ).join('');
+                        }
+
                         // Show color selector for MDF kit
                         const colorSelector = document.getElementById('color-selector');
                         const colorSelect = document.getElementById('color-select');
@@ -463,12 +513,12 @@
                         const modificationSelectors = document.getElementById('modification-selectors');
                         if (product.hasModifications && product.modifications) {
                             modificationSelectors.style.display = 'block';
-                            
+
                             const coatingButtons = document.getElementById('coating-buttons');
                             const glassButtons = document.getElementById('glass-buttons');
                             const sizeButtons = document.getElementById('size-buttons');
                             const colorSwatches = document.getElementById('color-swatches');
-                            
+
                             // Track selections
                             const selections = {
                                 coating: null,
@@ -476,13 +526,13 @@
                                 size: null,
                                 color: null
                             };
-                            
+
                             // Get all unique values
                             const coatings = [...new Set(product.modifications.map(m => m.coating))];
                             const glasses = [...new Set(product.modifications.map(m => m.glass))];
                             const sizes = [...new Set(product.modifications.flatMap(m => m.sizes))];
                             const allColors = [...new Set(product.modifications.flatMap(m => m.colors))];
-                            
+
                             // Create coating buttons
                             coatings.forEach(coating => {
                                 const btn = document.createElement('button');
@@ -492,7 +542,7 @@
                                 btn.addEventListener('click', () => selectOption('coating', coating));
                                 coatingButtons.appendChild(btn);
                             });
-                            
+
                             // Create glass buttons
                             glasses.forEach(glass => {
                                 const btn = document.createElement('button');
@@ -502,7 +552,7 @@
                                 btn.addEventListener('click', () => selectOption('glass', glass));
                                 glassButtons.appendChild(btn);
                             });
-                            
+
                             // Create size buttons
                             sizes.forEach(size => {
                                 const btn = document.createElement('button');
@@ -512,13 +562,13 @@
                                 btn.addEventListener('click', () => selectOption('size', size));
                                 sizeButtons.appendChild(btn);
                             });
-                            
+
                             // Create color swatches
                             allColors.forEach(color => {
                                 const swatch = document.createElement('div');
                                 swatch.className = 'color-swatch';
                                 swatch.dataset.value = color;
-                                
+
                                 // Find image for this color
                                 let colorImage = null;
                                 for (const mod of product.modifications) {
@@ -528,7 +578,7 @@
                                         break;
                                     }
                                 }
-                                
+
                                 if (colorImage) {
                                     const img = document.createElement('img');
                                     img.src = `../images/${colorImage}`;
@@ -537,20 +587,20 @@
                                 } else {
                                     swatch.textContent = color;
                                 }
-                                
+
                                 swatch.addEventListener('click', () => selectOption('color', color));
                                 colorSwatches.appendChild(swatch);
                             });
-                            
+
                             // Selection function
                             function selectOption(type, value) {
                                 selections[type] = value;
-                                
+
                                 // Update UI
                                 updateButtonStates();
                                 updatePriceAndImage();
                             }
-                            
+
                             // Check if combination is available
                             function isCombinationAvailable(coating, glass, size, color) {
                                 return product.modifications.some(mod => {
@@ -561,7 +611,7 @@
                                     return coatingMatch && glassMatch && sizeMatch && colorMatch;
                                 });
                             }
-                            
+
                             // Get available options for a specific type
                             function getAvailableOptions(type, currentSelections) {
                                 const available = new Set();
@@ -570,7 +620,7 @@
                                     const glassMatch = !currentSelections.glass || mod.glass === currentSelections.glass;
                                     const sizeMatch = !currentSelections.size || mod.sizes.includes(currentSelections.size);
                                     const colorMatch = !currentSelections.color || mod.colors.includes(currentSelections.color);
-                                    
+
                                     if (coatingMatch && glassMatch && sizeMatch && colorMatch) {
                                         if (type === 'coating') available.add(mod.coating);
                                         if (type === 'glass') available.add(mod.glass);
@@ -580,7 +630,7 @@
                                 });
                                 return available;
                             }
-                            
+
                             // Update button states (enabled/disabled)
                             function updateButtonStates() {
                                 // Update coating buttons
@@ -593,7 +643,7 @@
                                     // Don't disable the button, just show visual state
                                     btn.disabled = false;
                                 });
-                                
+
                                 // Update glass buttons
                                 const availableGlasses = getAvailableOptions('glass', selections);
                                 glassButtons.querySelectorAll('.mod-btn').forEach(btn => {
@@ -603,7 +653,7 @@
                                     btn.classList.toggle('disabled', !available);
                                     btn.disabled = false;
                                 });
-                                
+
                                 // Update size buttons
                                 const availableSizes = getAvailableOptions('size', selections);
                                 sizeButtons.querySelectorAll('.mod-btn').forEach(btn => {
@@ -613,7 +663,7 @@
                                     btn.classList.toggle('disabled', !available);
                                     btn.disabled = false;
                                 });
-                                
+
                                 // Update color swatches
                                 const availableColors = getAvailableOptions('color', selections);
                                 colorSwatches.querySelectorAll('.color-swatch').forEach(swatch => {
@@ -623,7 +673,7 @@
                                     swatch.classList.toggle('disabled', !available);
                                 });
                             }
-                            
+
                             // Update price and image based on selections
                             function updatePriceAndImage() {
                                 const matchingMod = product.modifications.find(mod => {
@@ -633,10 +683,10 @@
                                     const colorMatch = !selections.color || mod.colors.includes(selections.color);
                                     return coatingMatch && glassMatch && sizeMatch && colorMatch;
                                 });
-                                
+
                                 if (matchingMod) {
                                     document.getElementById('product-price').textContent = `${matchingMod.price} грн`;
-                                    
+
                                     // Update image if color is selected
                                     if (selections.color) {
                                         const colorIndex = matchingMod.colors.indexOf(selections.color);
@@ -645,11 +695,11 @@
                                             document.getElementById('main-image').src = imageUrl;
                                         }
                                     }
-                                    
+
                                     // Update specs
                                     document.getElementById('product-size').textContent = matchingMod.sizes.join(', ');
                                     document.getElementById('product-coating').textContent = matchingMod.coating;
-                                    
+
                                     // Store for cart
                                     window.selectedModification = {
                                         ...matchingMod,
@@ -660,23 +710,31 @@
                                     };
                                 }
                             }
-                            
+
                             // Initial state
                             updateButtonStates();
                         } else {
                             modificationSelectors.style.display = 'none';
                         }
-                        
+
+                        // RAL color visualizer disabled
+                        const ralVisualizer = document.getElementById('ral-visualizer');
+                        if (ralVisualizer) {
+                            ralVisualizer.style.display = 'none';
+                        }
+
                         // Load similar products (same category, excluding current product)
                         const similarProducts = products.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
                         const similarGrid = document.getElementById('similar-products-grid');
                         similarProducts.forEach(similarProduct => {
                             const similarImageUrl = similarProduct.image ? `../images/${similarProduct.image}` : null;
+                            const similarIsMetalDoor = similarProduct.category === 'Металеві, технічні та протипожежні двері';
+                            const similarPriceHtml = similarIsMetalDoor ? '' : `<p class="product-price">${similarProduct.price} грн</p>`;
                             const card = document.createElement('div');
                             card.className = 'card product-card';
                             card.style.opacity = '1';
                             card.style.transform = 'translateY(0)';
-                            
+
                             if (similarImageUrl) {
                                 card.innerHTML = `
                                     <div class="product-image">
@@ -684,7 +742,7 @@
                                     </div>
                                     <h3 class="product-title">${similarProduct.name}</h3>
                                     <p class="product-category">${similarProduct.category}</p>
-                                    <p class="product-price">${similarProduct.price} грн</p>
+                                    ${similarPriceHtml}
                                     <a href="../product/?id=${similarProduct.id}" class="btn btn-outline">Детальніше</a>
                                 `;
                             } else {
@@ -696,7 +754,7 @@
                                     </div>
                                     <h3 class="product-title">${similarProduct.name}</h3>
                                     <p class="product-category">${similarProduct.category}</p>
-                                    <p class="product-price">${similarProduct.price} грн</p>
+                                    ${similarPriceHtml}
                                     <a href="../product/?id=${similarProduct.id}" class="btn btn-outline">Детальніше</a>
                                 `;
                             }
@@ -716,37 +774,37 @@
                 document.getElementById('product-title').textContent = 'Товар не вказано';
                 document.getElementById('product-category').textContent = '';
             }
-            
+
             // Cart functions
             function addToCart(product) {
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                
+
                 // For MDF kit, check if same color already exists
                 if (product.id === 'MDF-TST-001' && product.selectedColor) {
                     const existingItem = cart.find(item => item.id === product.id && item.selectedColor === product.selectedColor);
-                    
+
                     if (existingItem) {
                         existingItem.quantity += 1;
                     } else {
                         cart.push({ ...product, quantity: 1 });
                     }
-                } 
+                }
                 // For doors with modifications
                 else if (product.hasModifications && window.selectedModification) {
                     const mod = window.selectedModification;
-                    const existingItem = cart.find(item => 
-                        item.id === product.id && 
+                    const existingItem = cart.find(item =>
+                        item.id === product.id &&
                         item.selectedCoating === mod.coating &&
                         item.selectedGlass === mod.glass &&
                         item.selectedSize === mod.selectedSize &&
                         item.selectedColor === mod.selectedColor
                     );
-                    
+
                     if (existingItem) {
                         existingItem.quantity += 1;
                     } else {
-                        cart.push({ 
-                            ...product, 
+                        cart.push({
+                            ...product,
                             quantity: 1,
                             selectedCoating: mod.coating,
                             selectedGlass: mod.glass,
@@ -758,17 +816,17 @@
                 }
                 else {
                     const existingItem = cart.find(item => item.id === product.id);
-                    
+
                     if (existingItem) {
                         existingItem.quantity += 1;
                     } else {
                         cart.push({ ...product, quantity: 1 });
                     }
                 }
-                
+
                 localStorage.setItem('cart', JSON.stringify(cart));
             }
-            
+
             function updateCartCount() {
                 const cart = JSON.parse(localStorage.getItem('cart')) || [];
                 const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -777,7 +835,7 @@
                     cartCountElement.textContent = totalItems;
                 }
             }
-            
+
             // Toast notification function
             function showToast(message) {
                 // Remove existing toast if any
@@ -785,7 +843,7 @@
                 if (existingToast) {
                     existingToast.remove();
                 }
-                
+
                 // Create toast element
                 const toast = document.createElement('div');
                 toast.className = 'toast';
@@ -802,25 +860,25 @@
                         </svg>
                     </button>
                 `;
-                
+
                 document.body.appendChild(toast);
-                
+
                 // Show toast
                 setTimeout(() => toast.classList.add('show'), 10);
-                
+
                 // Auto hide after 3 seconds
                 setTimeout(() => {
                     toast.classList.remove('show');
                     setTimeout(() => toast.remove(), 300);
                 }, 3000);
-                
+
                 // Close button functionality
                 toast.querySelector('.toast-close').addEventListener('click', () => {
                     toast.classList.remove('show');
                     setTimeout(() => toast.remove(), 300);
                 });
             }
-            
+
             // Add to cart button functionality
             const addToCartBtn = document.getElementById('add-to-cart-btn');
             if (addToCartBtn) {
@@ -830,7 +888,7 @@
                         showToast('Помилка завантаження товару');
                         return;
                     }
-                    
+
                     // Check if color is selected for MDF kit
                     if (currentProduct.id === 'MDF-TST-001') {
                         const colorSelect = document.getElementById('color-select');
@@ -849,7 +907,7 @@
                     showToast('Товар додано до кошика!');
                 });
             }
-            
+
             // Initialize cart count
             updateCartCount();
         });

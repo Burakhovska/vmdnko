@@ -109,6 +109,27 @@
             </div>
         </section>
 
+        <!-- Category Slider Section -->
+        <section class="section category-slider-section">
+            <div class="container">
+                <div class="category-slider-wrapper">
+                    <button class="slider-arrow slider-arrow-prev" id="slider-prev" aria-label="Попередня">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="category-slider" id="category-slider">
+                        <!-- Generated -->
+                    </div>
+                    <button class="slider-arrow slider-arrow-next" id="slider-next" aria-label="Наступна">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Filters Section -->
         <section class="section filters-section">
             <div class="container">
@@ -424,6 +445,10 @@
                     productCard.style.opacity = '1';
                     productCard.style.transform = 'translateY(0)';
                     
+                    const isMetalDoor = product.category === 'Металеві, технічні та протипожежні двері';
+                    const priceHtml = isMetalDoor ? '' : `<p class="product-price">${product.price} грн</p>`;
+                    const cartBtnHtml = isMetalDoor ? '' : `<button class="btn btn-primary add-to-cart" data-id="${product.id}">В кошик</button>`;
+
                     if (imageUrl) {
                         productCard.innerHTML = `
                             <div class="product-image">
@@ -434,10 +459,10 @@
                             </div>
                             <h3 class="product-title">${product.name}</h3>
                             <p class="product-category">${product.category}</p>
-                            <p class="product-price">${product.price} грн</p>
+                            ${priceHtml}
                             <div class="product-actions">
                                 <a href="../product/?id=${product.id}" class="btn btn-outline">Детальніше</a>
-                                <button class="btn btn-primary add-to-cart" data-id="${product.id}">В кошик</button>
+                                ${cartBtnHtml}
                             </div>
                         `;
                     } else {
@@ -449,10 +474,10 @@
                             </div>
                             <h3 class="product-title">${product.name}</h3>
                             <p class="product-category">${product.category}</p>
-                            <p class="product-price">${product.price} грн</p>
+                            ${priceHtml}
                             <div class="product-actions">
                                 <a href="../product/?id=${product.id}" class="btn btn-outline">Детальніше</a>
-                                <button class="btn btn-primary add-to-cart" data-id="${product.id}">В кошик</button>
+                                ${cartBtnHtml}
                             </div>
                         `;
                     }
@@ -647,6 +672,57 @@
                     });
                 }
                 
+                // Category slider
+                const categorySlider = document.getElementById('category-slider');
+                const sliderPrev = document.getElementById('slider-prev');
+                const sliderNext = document.getElementById('slider-next');
+
+                function updateSliderActive(category) {
+                    if (!categorySlider) return;
+                    categorySlider.querySelectorAll('.category-slide').forEach(slide => {
+                        slide.classList.toggle('active', slide.dataset.filter === category);
+                    });
+                }
+
+                function renderCategorySlider() {
+                    if (!categorySlider) return;
+                    categorySlider.innerHTML = '';
+                    const sliderItems = ['all', ...categories];
+                    sliderItems.forEach(item => {
+                        const slide = document.createElement('div');
+                        slide.className = 'category-slide' + (item === 'all' ? ' active' : '');
+                        slide.dataset.filter = item;
+                        slide.textContent = item === 'all' ? 'Всі' : item;
+                        slide.addEventListener('click', () => {
+                            currentFilters.category = item;
+                            currentFilters.subcategory = 'all';
+                            updateSubcategoryFilters(item);
+
+                            updateSliderActive(item);
+                            categoryFilterGroup.querySelectorAll('.filter-btn').forEach(btn => {
+                                btn.classList.toggle('active', btn.getAttribute('data-filter') === item);
+                            });
+
+                            filterProducts();
+                        });
+                        categorySlider.appendChild(slide);
+                    });
+                }
+
+                if (sliderPrev && categorySlider) {
+                    sliderPrev.addEventListener('click', () => {
+                        categorySlider.scrollBy({ left: -240, behavior: 'smooth' });
+                    });
+                }
+
+                if (sliderNext && categorySlider) {
+                    sliderNext.addEventListener('click', () => {
+                        categorySlider.scrollBy({ left: 240, behavior: 'smooth' });
+                    });
+                }
+
+                renderCategorySlider();
+
                 // Handle filter click function
                 function handleFilterClick(filterType, filterValue, clickedBtn) {
                     console.log('Filter button clicked:', { filterType, filterValue });
@@ -661,6 +737,7 @@
                         currentFilters.category = filterValue;
                         currentFilters.subcategory = 'all'; // Reset subcategory when category changes
                         updateSubcategoryFilters(filterValue);
+                        updateSliderActive(filterValue);
                     } else if (filterType === 'subcategory') {
                         currentFilters.subcategory = filterValue;
                     } else if (filterType === 'coating') {
@@ -785,7 +862,9 @@
                         if (subcategoryFilterGroup) {
                             subcategoryFilterGroup.style.display = 'none';
                         }
-                        
+
+                        updateSliderActive('all');
+
                         if (sortSelect) sortSelect.value = 'default';
                         
                         filterProducts();
