@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.vmdnko.com.ua/</loc>
-        <lastmod>2026-07-17</lastmod>
+        <lastmod>2026-07-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://www.vmdnko.com.ua/catalog/</loc>
-        <lastmod>2026-07-17</lastmod>
+        <lastmod>2026-07-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.vmdnko.com.ua/about/</loc>
-        <lastmod>2026-07-17</lastmod>
+        <lastmod>2026-07-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.vmdnko.com.ua/contacts/</loc>
-        <lastmod>2026-07-17</lastmod>
+        <lastmod>2026-07-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-TST-001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-SRU-002</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DAN-003</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DVT-004</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-KSH-005</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DKM-006</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-FPL-007</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-BUM-008</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DBL-009</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RBL-010</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RZT-011</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RAV-012</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-YKP-013</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-TST-001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-SRU-002</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DAN-003</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DVT-004</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-KSH-005</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DKM-006</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-FPL-007</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-BUM-008</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DBL-009</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RBL-010</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RZT-011</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RAV-012</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-YKP-013</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=MDF-TST-001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-TST-001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-SRU-002</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-DAN-003</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-DVT-004</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-KSH-005</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0002</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0003</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0004</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0005</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0006</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0008</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0009</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0010</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0001</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0002</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0003</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0004</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0005</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0006</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0007</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0008</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0009</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-00010</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-00011</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-TST-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-SRU-002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DAN-003</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DVT-004</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-KSH-005</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DKM-006</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-FPL-007</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-BUM-008</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-DBL-009</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RBL-010</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RZT-011</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-RAV-012</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=SQ-YKP-013</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-TST-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-SRU-002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DAN-003</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DVT-004</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-KSH-005</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DKM-006</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-FPL-007</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-BUM-008</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-DBL-009</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RBL-010</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RZT-011</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-RAV-012</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=ST-YKP-013</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=MDF-TST-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-TST-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-SRU-002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-DAN-003</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-DVT-004</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=HEX-KSH-005</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0003</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0004</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0005</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0006</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0008</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0009</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=DR-0010</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0003</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0004</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0005</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0006</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0007</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0008</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-0009</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-00010</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=RV-00011</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=MD-INS-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=MD-INS-002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=FD-EI-001</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.vmdnko.com.ua/product/?id=FD-EI-002</loc><lastmod>2026-07-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
