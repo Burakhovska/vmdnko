@@ -1878,17 +1878,6 @@ button {
     opacity: 0.6;
 }
 
-/* ===== Map Section ===== */
-.map-section {
-    background: var(--color-black);
-}
-
-.map-container {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-}
-
 /* ===== Modal ===== */
 .modal {
     position: fixed;
