@@ -422,6 +422,13 @@
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === 4) {
                             if (xhr.status === 200) {
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({
+                                    event: 'purchase',
+                                    transaction_id: `order-${Date.now()}`,
+                                    value: orderTotal,
+                                    currency: 'UAH'
+                                });
                                 showToast('Дякуємо! Ваше замовлення успішно відправлено.');
                                 setTimeout(() => {
                                     window.location.href = 'index.html';

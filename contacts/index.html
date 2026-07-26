@@ -356,6 +356,11 @@
                         console.log('Response status:', response.status);
                         console.log('Response ok:', response.ok);
                         if (response.ok) {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({
+                                event: 'generate_lead',
+                                lead_type: 'contact_form'
+                            });
                             window.location.href = 'thanks.html';
                         } else {
                             response.json().then(data => {

@@ -110,6 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }).then(response => {
                 if (response.ok) {
                     // Success
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'generate_lead',
+                        lead_type: 'calculation_request'
+                    });
                     if (form) {
                         form.style.display = 'none';
                     }
