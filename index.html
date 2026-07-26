@@ -47,7 +47,8 @@
         "email": "vmdnk@outlook.com",
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Київ",
+            "addressLocality": "с. Требухів",
+            "addressRegion": "Київська область, Броварський район",
             "addressCountry": "UA"
         },
         "priceRange": "₴₴",
@@ -91,14 +92,35 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg"></div>
+        <section class="hero" aria-label="Презентація VMDNKO">
+            <div class="hero-slides">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1722109997425-40f920848aed?fm=jpg&amp;q=80&amp;w=1000&amp;auto=format&amp;fit=crop');"></div>
+                <div class="hero-slide" style="background-image: url('images/DR-0004/Рустік Авіньон.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/special-doors.jpg');"></div>
+            </div>
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Акустичні Стінові Панелі</h1>
-                    <p class="hero-subtitle">Поєднання сучасного дизайну та функціональності. Ефективне шумопоглинання для комфортного простору</p>
-                    <a href="catalog/" class="btn btn-primary">Переглянути каталог</a>
+                <div class="hero-content hero-content-slide active">
+                    <h1 class="hero-title">Акустичні Панелі</h1>
+                    <p class="hero-subtitle">Ефективне шумопоглинання та стильний дизайн для вашого інтер'єру</p>
+                    <a href="catalog/?category=Акустичні%20панелі" class="btn btn-primary">Переглянути категорію</a>
                 </div>
+                <div class="hero-content hero-content-slide">
+                    <h1 class="hero-title">Міжкімнатні Двері</h1>
+                    <p class="hero-subtitle">Якісні та надійні двері для сучасного інтер'єру</p>
+                    <a href="catalog/?category=міжкімнатні%20двері" class="btn btn-primary">Переглянути категорію</a>
+                </div>
+                <div class="hero-content hero-content-slide">
+                    <h1 class="hero-title">Металеві, Технічні та Протипожежні Двері</h1>
+                    <p class="hero-subtitle">Надійні рішення для підвищених вимог до безпеки та міцності</p>
+                    <a href="catalog/?category=Металеві%2C%20технічні%20та%20протипожежні%20двері" class="btn btn-primary">Переглянути категорію</a>
+                </div>
+            </div>
+            <button class="hero-control hero-control-prev" type="button" aria-label="Попередній слайд">&#10094;</button>
+            <button class="hero-control hero-control-next" type="button" aria-label="Наступний слайд">&#10095;</button>
+            <div class="hero-dots" aria-label="Вибір слайду">
+                <button class="hero-dot active" type="button" aria-label="Слайд 1"></button>
+                <button class="hero-dot" type="button" aria-label="Слайд 2"></button>
+                <button class="hero-dot" type="button" aria-label="Слайд 3"></button>
             </div>
         </section>
 
@@ -304,7 +326,7 @@
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
-                            Київ, Україна
+                            Київська область, Броварський район, с. Требухів
                         </li>
                     </ul>
                 </div>
