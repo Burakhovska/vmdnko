@@ -1855,19 +1855,46 @@ button {
 
 .contact-layout {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: var(--spacing-xxl);
-    max-width: var(--container-max);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 20px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+}
+
+.contact-layout > .contact-info:not(.delivery-info),
+.contact-form-wrapper {
+    padding: clamp(18px, 2vw, 24px);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 18px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.contact-layout > .contact-info:not(.delivery-info) {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+}
+
+.contact-form-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+}
+
+.contact-layout > .delivery-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
 }
 
 .contact-info-title,
 .contact-form-title {
     font-family: var(--font-primary);
-    font-size: 28px;
+    font-size: 21px;
     font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 16px;
     color: var(--color-white);
     letter-spacing: -0.5px;
 }
@@ -1875,15 +1902,15 @@ button {
 .contact-details {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: 12px;
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    background: rgba(255, 255, 255, 0.03);
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.035);
     border: 1px solid rgba(201, 169, 98, 0.1);
     border-radius: 12px;
     transition: var(--transition-normal);
@@ -1897,8 +1924,8 @@ button {
 
 .contact-icon {
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1909,30 +1936,30 @@ button {
 
 .contact-icon svg {
     color: var(--color-gold);
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 
 .contact-text h3 {
     font-family: var(--font-primary);
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 3px;
     color: var(--color-white);
     letter-spacing: -0.3px;
 }
 
 .contact-text p {
     color: var(--color-text-muted);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 /* ===== Delivery Info ===== */
 .delivery-info {
     position: relative;
     overflow: hidden;
-    padding: clamp(28px, 4vw, 48px);
+    padding: clamp(24px, 3vw, 34px);
     background: linear-gradient(145deg, rgba(201, 169, 98, 0.13) 0%, rgba(255, 255, 255, 0.035) 42%, rgba(0, 0, 0, 0.18) 100%);
     border: 1px solid rgba(201, 169, 98, 0.28);
     border-radius: 24px;
@@ -1973,12 +2000,12 @@ button {
 .delivery-heading .contact-info-title {
     max-width: 420px;
     margin-bottom: 14px;
-    font-size: clamp(26px, 3vw, 36px);
+    font-size: clamp(24px, 2.5vw, 30px);
 }
 
 .delivery-intro {
     max-width: 620px;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
     color: var(--color-text-muted);
     font-size: 15px;
     line-height: 1.75;
@@ -1992,8 +2019,8 @@ button {
 }
 
 .delivery-step {
-    min-height: 146px;
-    padding: 18px;
+    min-height: 118px;
+    padding: 15px;
     background: rgba(0, 0, 0, 0.16);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
@@ -2043,7 +2070,7 @@ button {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 18px;
+    padding: 14px;
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(201, 169, 98, 0.18);
     border-radius: 14px;
@@ -2085,8 +2112,8 @@ button {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    padding: var(--spacing-xl);
+    gap: 12px;
+    padding: 16px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(201, 169, 98, 0.1);
     border-radius: 16px;
@@ -2107,13 +2134,13 @@ button {
 
 .form-group input,
 .form-group textarea {
-    padding: 14px 16px;
+    padding: 11px 13px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(201, 169, 98, 0.2);
     border-radius: 8px;
     color: var(--color-white);
     font-family: var(--font-secondary);
-    font-size: 15px;
+    font-size: 14px;
     transition: var(--transition-normal);
 }
 
