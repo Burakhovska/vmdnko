@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <!-- Google Consent Mode -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            wait_for_update: 500
+        });
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -446,11 +458,13 @@
             
             acceptBtn.addEventListener('click', function() {
                 localStorage.setItem('cookieChoice', 'accepted');
+                gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
                 cookieBanner.classList.remove('show');
             });
             
             declineBtn.addEventListener('click', function() {
                 localStorage.setItem('cookieChoice', 'declined');
+                gtag('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
                 cookieBanner.classList.remove('show');
             });
         });
