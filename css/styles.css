@@ -122,6 +122,7 @@ button {
     align-items: center;
 }
 
+
 .nav-menu {
     display: flex;
     gap: var(--spacing-lg);
