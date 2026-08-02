@@ -22,7 +22,7 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="description" content="Купити акустичні панелі та двері VMDNKO. Детальний опис, характеристики, доставка по Україні.">
     <meta name="keywords" content="акустична панель, міжкімнатні двері, металеві двері, VMDNKO, купити панель">
     <meta name="author" content="VMDNKO">
@@ -45,7 +45,17 @@
     <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/hero.jpg">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.vmdnko.com.ua/product/?id=SQ-TST-001">
+    <script>
+        const canonicalProductId = new URLSearchParams(window.location.search).get('id');
+        if (canonicalProductId) {
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            canonicalLink.href = `https://www.vmdnko.com.ua/product/?id=${encodeURIComponent(canonicalProductId)}`;
+            document.head.appendChild(canonicalLink);
+            document.querySelector('meta[property="og:url"]').content = canonicalLink.href;
+            document.querySelector('meta[name="twitter:url"]').content = canonicalLink.href;
+        }
+    </script>
 
     <title>Продукція VMDNKO — акустичні панелі та двері</title>
     <link rel="icon" type="image/png" href="../images/favicon.png">
@@ -55,29 +65,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Structured Data -->
-    <script type="application/ld+json" id="product-structured-data">
-    {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Акустична панель Квадрат",
-        "description": "Акустична панель Квадрат від VMDNKO. Ефективне шумопоглинання, геометричний дизайн для сучасного інтер'єру.",
-        "category": "Квадрат",
-        "sku": "SQ-TST-001",
-        "image": "https://www.vmdnko.com.ua/images/titan_softtouch.png",
-        "url": "https://www.vmdnko.com.ua/product/?id=SQ-TST-001",
-        "brand": {
-            "@type": "Brand",
-            "name": "VMDNKO"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": "https://www.vmdnko.com.ua/product/?id=SQ-TST-001",
-            "price": 860,
-            "priceCurrency": "UAH",
-            "availability": "https://schema.org/InStock"
-        }
-    }
-    </script>
+    <script type="application/ld+json" id="product-structured-data">{}</script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -122,7 +110,7 @@
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
-                <h1 class="page-title" id="product-title">Завантаження...</h1>
+                <h1 class="page-title" id="product-title">Продукція VMDNKO</h1>
                 <span class="premium-badge" id="premium-badge" style="display: none;">Premium</span>
                 <p class="page-subtitle" id="product-category">...</p>
             </div>
@@ -418,6 +406,8 @@
                     console.log('Product found:', product);
 
                     if (product) {
+                        document.querySelector('meta[name="robots"]').content = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
                         // Store product globally for add to cart button
                         window.currentProduct = product;
 
@@ -430,43 +420,78 @@
                         }
 
                         // Update page title
-                        const pageTitle = `${product.name} - VMDNKO`;
-                        const plainDescription = (product.description || `${product.name} від VMDNKO`).replace(/<[^>]*>/g, '').trim();
-                        const canonicalUrl = new URL('/product/', window.location.origin);
+                        const pageTitle = `${product.name} — купити в VMDNKO`;
+                        const plainDescription = (product.description || `${product.name} від VMDNKO`).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+                        const seoDescription = plainDescription.length > 155 ? `${plainDescription.slice(0, 152).trim()}...` : plainDescription;
+                        const canonicalUrl = new URL('/product/', 'https://www.vmdnko.com.ua');
                         canonicalUrl.searchParams.set('id', product.id);
                         const imageUrl = product.image ? `../images/${product.image}` : null;
-                        const absoluteImageUrl = imageUrl ? new URL(imageUrl, window.location.href).href : 'https://www.vmdnko.com.ua/images/hero.jpg';
+                        const absoluteImageUrl = product.image ? new URL(`/images/${product.image}`, 'https://www.vmdnko.com.ua').href : 'https://www.vmdnko.com.ua/images/hero.jpg';
 
                         document.title = pageTitle;
-                        document.querySelector('meta[name="description"]').content = plainDescription;
+                        document.querySelector('meta[name="description"]').content = seoDescription;
                         document.querySelector('link[rel="canonical"]').href = canonicalUrl.href;
+                        document.querySelector('meta[property="og:type"]').content = 'product';
                         document.querySelector('meta[property="og:url"]').content = canonicalUrl.href;
                         document.querySelector('meta[property="og:title"]').content = pageTitle;
-                        document.querySelector('meta[property="og:description"]').content = plainDescription;
+                        document.querySelector('meta[property="og:description"]').content = seoDescription;
                         document.querySelector('meta[property="og:image"]').content = absoluteImageUrl;
                         document.querySelector('meta[name="twitter:url"]').content = canonicalUrl.href;
                         document.querySelector('meta[name="twitter:title"]').content = pageTitle;
-                        document.querySelector('meta[name="twitter:description"]').content = plainDescription;
+                        document.querySelector('meta[name="twitter:description"]').content = seoDescription;
                         document.querySelector('meta[name="twitter:image"]').content = absoluteImageUrl;
                         document.getElementById('product-structured-data').textContent = JSON.stringify({
                             '@context': 'https://schema.org',
-                            '@type': 'Product',
-                            name: product.name,
-                            description: plainDescription,
-                            image: absoluteImageUrl,
-                            sku: product.id,
-                            category: product.category,
-                            brand: {
-                                '@type': 'Brand',
-                                name: 'VMDNKO'
-                            },
-                            offers: {
-                                '@type': 'Offer',
-                                url: canonicalUrl.href,
-                                price: product.price,
-                                priceCurrency: 'UAH',
-                                availability: 'https://schema.org/InStock'
-                            }
+                            '@graph': [
+                                {
+                                    '@type': 'Product',
+                                    '@id': `${canonicalUrl.href}#product`,
+                                    name: product.name,
+                                    description: plainDescription,
+                                    image: [absoluteImageUrl],
+                                    sku: product.id,
+                                    category: product.category,
+                                    brand: {
+                                        '@type': 'Brand',
+                                        name: 'VMDNKO'
+                                    },
+                                    offers: {
+                                        '@type': 'Offer',
+                                        url: canonicalUrl.href,
+                                        price: product.price,
+                                        priceCurrency: 'UAH',
+                                        availability: 'https://schema.org/InStock',
+                                        itemCondition: 'https://schema.org/NewCondition',
+                                        seller: {
+                                            '@type': 'Organization',
+                                            name: 'VMDNKO'
+                                        }
+                                    }
+                                },
+                                {
+                                    '@type': 'BreadcrumbList',
+                                    itemListElement: [
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 1,
+                                            name: 'Головна',
+                                            item: 'https://www.vmdnko.com.ua/'
+                                        },
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 2,
+                                            name: 'Каталог',
+                                            item: 'https://www.vmdnko.com.ua/catalog/'
+                                        },
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 3,
+                                            name: product.name,
+                                            item: canonicalUrl.href
+                                        }
+                                    ]
+                                }
+                            ]
                         });
 
                         // Update page header
@@ -489,6 +514,7 @@
                         const mainImage = document.getElementById('main-image');
                         if (imageUrl) {
                             mainImage.src = imageUrl;
+                            mainImage.alt = product.name;
                             mainImage.style.display = 'block';
                         } else {
                             mainImage.style.display = 'none';
