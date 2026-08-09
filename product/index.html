@@ -244,7 +244,7 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
-                            +380 93 956 0057
+                            <a class="sales-phone" href="tel:+380998020989">+380 99 802 09 89</a>
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -357,11 +357,12 @@
                     <input type="tel" id="calc-phone" name="phone" required placeholder="+380 XX XXX XX XX">
                 </div>
                 <div class="form-group">
-                    <label for="calc-type">Тип дверей</label>
+                    <label for="calc-type">Тип продукції</label>
                     <select id="calc-type" name="type">
                         <option value="">Оберіть тип</option>
                         <option value="Акустичні панелі">Акустичні панелі</option>
-                        <option value="міжкімнатні двері">міжкімнатні двері</option>
+                        <option value="Міжкімнатні двері">Міжкімнатні двері</option>
+                        <option value="Протипожежні двері">Протипожежні двері</option>
                         <option value="Інше">Інше</option>
                     </select>
                 </div>
@@ -423,7 +424,26 @@
                         // Update page title
                         const pageTitle = `${product.name} — купити в VMDNKO`;
                         const plainDescription = (product.description || `${product.name} від VMDNKO`).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-                        const seoDescription = plainDescription.length > 155 ? `${plainDescription.slice(0, 152).trim()}...` : plainDescription;
+                        const productDetails = [
+                            product.color && `колір ${product.color}`,
+                            product.size && `розмір ${product.size}`,
+                            `артикул ${product.id}`
+                        ].filter(Boolean).join(', ');
+                        const seoDescriptionSource = `${product.name}: ${productDetails}. ${plainDescription.replace(/[.!?]+$/, '')}. Купити в VMDNKO з доставкою по Україні.`;
+                        const seoDescription = seoDescriptionSource.length > 155 ? `${seoDescriptionSource.slice(0, 152).trim()}...` : seoDescriptionSource;
+                        const seoKeywords = [...new Set([
+                            product.name,
+                            `${product.name} купити`,
+                            `${product.name} ціна`,
+                            product.category,
+                            product.subcategory,
+                            product.color,
+                            product.coating,
+                            product.id,
+                            `${product.category} Київ`,
+                            `${product.category} Україна`,
+                            'VMDNKO'
+                        ].filter(Boolean).map(keyword => keyword.trim()))].join(', ');
                         const canonicalUrl = new URL('/product/', 'https://www.vmdnko.com.ua');
                         canonicalUrl.searchParams.set('id', product.id);
                         const imageUrl = product.image ? `../images/${product.image}` : null;
@@ -431,6 +451,7 @@
 
                         document.title = pageTitle;
                         document.querySelector('meta[name="description"]').content = seoDescription;
+                        document.querySelector('meta[name="keywords"]').content = seoKeywords;
                         document.querySelector('link[rel="canonical"]').href = canonicalUrl.href;
                         document.querySelector('meta[property="og:type"]').content = 'product';
                         document.querySelector('meta[property="og:url"]').content = canonicalUrl.href;
@@ -449,9 +470,11 @@
                                     '@id': `${canonicalUrl.href}#product`,
                                     name: product.name,
                                     description: plainDescription,
+                                    keywords: seoKeywords,
                                     image: [absoluteImageUrl],
                                     sku: product.id,
                                     category: product.category,
+                                    color: product.color,
                                     brand: {
                                         '@type': 'Brand',
                                         name: 'VMDNKO'
@@ -969,6 +992,6 @@
             updateCartCount();
         });
     </script>
-    <script src="../js/content-protection.js"></script>
+    <script src="../js/content-protection.js?v=2"></script>
 </body>
 </html>
