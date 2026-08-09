@@ -3,5 +3,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
+Disallow: /cart/
+Disallow: /404.html
 
 Sitemap: https://www.vmdnko.com.ua/sitemap.xml

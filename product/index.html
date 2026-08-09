@@ -45,13 +45,12 @@
     <meta name="twitter:image" content="https://www.vmdnko.com.ua/images/hero.jpg">
 
     <!-- Canonical URL -->
+    <link rel="canonical" id="canonical-product-link" href="https://www.vmdnko.com.ua/product/">
     <script>
         const canonicalProductId = new URLSearchParams(window.location.search).get('id');
-        if (canonicalProductId) {
-            const canonicalLink = document.createElement('link');
-            canonicalLink.rel = 'canonical';
+        const canonicalLink = document.getElementById('canonical-product-link');
+        if (canonicalProductId && canonicalLink) {
             canonicalLink.href = `https://www.vmdnko.com.ua/product/?id=${encodeURIComponent(canonicalProductId)}`;
-            document.head.appendChild(canonicalLink);
             document.querySelector('meta[property="og:url"]').content = canonicalLink.href;
             document.querySelector('meta[name="twitter:url"]').content = canonicalLink.href;
         }
