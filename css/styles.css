@@ -1847,15 +1847,15 @@ button {
 }
 
 .production-bg-1 {
-    background-image: url('../images/start-finish.jpg');
+    background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-sand) 100%);
 }
 
 .production-bg-2 {
-    background-image: url('../images/special-doors.jpg');
+    background: linear-gradient(135deg, var(--color-dark-wood) 0%, var(--color-graphite) 100%);
 }
 
 .production-bg-3 {
-    background-image: url('../images/dub_antik_2.jpeg');
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-dark-wood) 100%);
 }
 
 .production-item:hover .production-bg {
