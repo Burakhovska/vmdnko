@@ -675,6 +675,18 @@
                             function selectOption(type, value) {
                                 selections[type] = value;
 
+                                // Reset dependent options to avoid invalid combinations
+                                if (type === 'coating') {
+                                    selections.glass = null;
+                                    selections.size = null;
+                                    selections.color = null;
+                                } else if (type === 'glass') {
+                                    selections.size = null;
+                                    selections.color = null;
+                                } else if (type === 'size') {
+                                    selections.color = null;
+                                }
+
                                 // Update UI
                                 updateButtonStates();
                                 updatePriceAndImage();
@@ -693,12 +705,14 @@
 
                             // Get available options for a specific type
                             function getAvailableOptions(type, currentSelections) {
+                                // Ignore the selection of the current type so the user can switch it
+                                const activeSelections = { ...currentSelections, [type]: null };
                                 const available = new Set();
                                 product.modifications.forEach(mod => {
-                                    const coatingMatch = !currentSelections.coating || mod.coating === currentSelections.coating;
-                                    const glassMatch = !currentSelections.glass || mod.glass === currentSelections.glass;
-                                    const sizeMatch = !currentSelections.size || mod.sizes.includes(currentSelections.size);
-                                    const colorMatch = !currentSelections.color || mod.colors.includes(currentSelections.color);
+                                    const coatingMatch = !activeSelections.coating || mod.coating === activeSelections.coating;
+                                    const glassMatch = !activeSelections.glass || mod.glass === activeSelections.glass;
+                                    const sizeMatch = !activeSelections.size || mod.sizes.includes(activeSelections.size);
+                                    const colorMatch = !activeSelections.color || mod.colors.includes(activeSelections.color);
 
                                     if (coatingMatch && glassMatch && sizeMatch && colorMatch) {
                                         if (type === 'coating') available.add(mod.coating);
@@ -766,13 +780,19 @@
                                 if (matchingMod) {
                                     document.getElementById('product-price').textContent = `${matchingMod.price} грн`;
 
-                                    // Update image if color is selected
+                                    // Update image: use selected color, or fall back to first image of this modification
+                                    let imageUrl = null;
                                     if (selections.color) {
                                         const colorIndex = matchingMod.colors.indexOf(selections.color);
                                         if (colorIndex >= 0 && matchingMod.images[colorIndex]) {
-                                            const imageUrl = `../images/${matchingMod.images[colorIndex]}`;
-                                            document.getElementById('main-image').src = imageUrl;
+                                            imageUrl = `../images/${matchingMod.images[colorIndex]}`;
                                         }
+                                    }
+                                    if (!imageUrl && matchingMod.images && matchingMod.images[0]) {
+                                        imageUrl = `../images/${matchingMod.images[0]}`;
+                                    }
+                                    if (imageUrl) {
+                                        document.getElementById('main-image').src = imageUrl;
                                     }
 
                                     // Update specs
