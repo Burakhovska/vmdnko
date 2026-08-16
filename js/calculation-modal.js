@@ -115,6 +115,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         event: 'generate_lead',
                         lead_type: 'calculation_request'
                     });
+                    window.dataLayer.push({
+                        'event': 'form_submitted'
+                    });
                     if (form) {
                         form.style.display = 'none';
                     }
