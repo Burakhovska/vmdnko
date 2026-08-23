@@ -1,0 +1,14 @@
+Options -Indexes
+
+# Redirect index.html to root
+RewriteEngine On
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^(.*?)index\.html$ /$1 [L,R=301]
+
+# Redirect non-www to www
+RewriteCond %{HTTP_HOST} ^vmdnko\.com\.ua [NC]
+RewriteRule ^(.*)$ https://www.vmdnko.com.ua/$1 [L,R=301]
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
