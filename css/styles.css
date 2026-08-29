@@ -138,6 +138,8 @@ button {
 
 .logo img {
     display: block;
+    max-height: 44px;
+    width: auto;
     transform-origin: center;
     filter: drop-shadow(0 0 5px rgba(201, 169, 98, 0.22));
     animation: logoFloat 3.4s ease-in-out infinite;
@@ -2510,6 +2512,10 @@ button {
     
     .mobile-menu-btn {
         display: block;
+    }
+    
+    .logo img {
+        max-height: 36px;
     }
     
     .grid-2,
