@@ -438,10 +438,7 @@
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === 4) {
                             if (xhr.status === 200) {
-                                showToast('Дякуємо! Ваше замовлення успішно відправлено.');
-                                setTimeout(() => {
-                                    window.location.href = 'thanks.html';
-                                }, 3000);
+                                window.location.href = 'thanks.html';
                             } else {
                                 showToast('Сталася помилка при відправці замовлення. Спробуйте ще раз.');
                             }
