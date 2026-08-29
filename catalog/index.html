@@ -953,19 +953,19 @@
                 // Initial render
                 filterProducts();
                 
-                // Add to cart functionality
-                const addToCartButtons = document.querySelectorAll('.add-to-cart');
-                addToCartButtons.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const productId = e.target.getAttribute('data-id');
-                        const product = products.find(p => p.id === productId);
-                        
-                        if (product) {
-                            addToCart(product);
-                            updateCartCount();
-                            showToast('Товар додано до кошика!');
-                        }
-                    });
+                // Add to cart functionality via event delegation
+                productsGrid.addEventListener('click', (e) => {
+                    const addBtn = e.target.closest('.add-to-cart');
+                    if (!addBtn) return;
+
+                    const productId = addBtn.getAttribute('data-id');
+                    const product = products.find(p => p.id === productId);
+
+                    if (product) {
+                        addToCart(product);
+                        updateCartCount();
+                        showToast('Товар додано до кошика!');
+                    }
                 });
             } else {
                 console.error('Products data not loaded');
