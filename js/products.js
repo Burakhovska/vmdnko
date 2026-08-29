@@ -1361,7 +1361,7 @@ const products = [
         coating: "порошкове",
         category: "Металеві, технічні та протипожежні двері",
         subcategory: "Двері металеві утепленні",
-        image: "MD-INS-001/image.png"
+        image: "metal-insulated-doors/metal-insulated-doors-mmd-001.png"
     },
     {
         id: "MD-INS-002",
@@ -1387,7 +1387,7 @@ const products = [
         coating: "порошкове",
         category: "Металеві, технічні та протипожежні двері",
         subcategory: "Двері металеві утепленні",
-        image: "MD-INS-002/image.png"
+        image: "metal-insulated-doors/metal-insulated-doors-mmd-002.png"
     },
     {
         id: "FD-EI-001",
@@ -1436,7 +1436,7 @@ const products = [
         coating: "порошкове",
         category: "Металеві, технічні та протипожежні двері",
         subcategory: "Двері протипожежні",
-        image: "fire-doors.png"
+        image: "fire-doors-ei30/protipozhizhni-dveri-ei30.png"
     },
     {
         id: "FD-EI-002",
@@ -1487,7 +1487,7 @@ const products = [
         coating: "порошкове",
         category: "Металеві, технічні та протипожежні двері",
         subcategory: "Двері протипожежні",
-        image: "fire-doors.png"
+        image: "fire-doors-ei60/protipozhizhni-dveri-ei60.png"
     }
 ];
 
