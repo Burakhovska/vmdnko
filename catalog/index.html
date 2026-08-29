@@ -312,7 +312,7 @@
                             <line x1="0" y1="42" x2="150" y2="42" stroke="#C9A962" stroke-width="2"/>
                         </svg>
                     </div>
-                    <p class="footer-text">Акустичні стінові панелі та двері для сучасного інтер'єру</p>
+                    <p class="footer-text">Протипожежні двері, металеві двері та панелі для сучасного інтер'єру</p>
                 </div>
                 <div class="footer-section">
                     <h4 class="footer-title">Навігація</h4>
@@ -621,6 +621,15 @@
                     sortedProducts.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
                 } else if (sortValue === 'name-desc') {
                     sortedProducts.sort((a, b) => b.name.localeCompare(a.name, 'uk'));
+                } else {
+                    // Default sort: fire doors first, then others
+                    sortedProducts.sort((a, b) => {
+                        const aIsFireDoor = a.category === 'Металеві, технічні та протипожежні двері';
+                        const bIsFireDoor = b.category === 'Металеві, технічні та протипожежні двері';
+                        if (aIsFireDoor && !bIsFireDoor) return -1;
+                        if (!aIsFireDoor && bIsFireDoor) return 1;
+                        return 0;
+                    });
                 }
                 
                 renderProducts(sortedProducts);
