@@ -621,6 +621,15 @@
                     sortedProducts.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
                 } else if (sortValue === 'name-desc') {
                     sortedProducts.sort((a, b) => b.name.localeCompare(a.name, 'uk'));
+                } else {
+                    // Default sort: fire doors first, then others
+                    sortedProducts.sort((a, b) => {
+                        const aIsFireDoor = a.category === 'Металеві, технічні та протипожежні двері';
+                        const bIsFireDoor = b.category === 'Металеві, технічні та протипожежні двері';
+                        if (aIsFireDoor && !bIsFireDoor) return -1;
+                        if (!aIsFireDoor && bIsFireDoor) return 1;
+                        return 0;
+                    });
                 }
                 
                 renderProducts(sortedProducts);
