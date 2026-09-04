@@ -686,6 +686,11 @@
             const urlParams = new URLSearchParams(window.location.search);
             const categoryParam = urlParams.get('category');
             
+            // Get all unique categories
+            function getAllCategories() {
+                return [...new Set(products.map(p => p.category).filter(c => c))];
+            }
+            
             // Initialize with all products
             if (typeof products !== 'undefined' && products.length > 0) {
                 // Update category filters
