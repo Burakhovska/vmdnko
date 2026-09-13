@@ -5,11 +5,13 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        var savedCookieChoice = localStorage.getItem('cookieChoice');
+        var initialConsentState = savedCookieChoice === 'accepted' ? 'granted' : 'denied';
         gtag('consent', 'default', {
-            analytics_storage: 'denied',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
+            analytics_storage: initialConsentState,
+            ad_storage: initialConsentState,
+            ad_user_data: initialConsentState,
+            ad_personalization: initialConsentState,
             wait_for_update: 500
         });
     </script>
