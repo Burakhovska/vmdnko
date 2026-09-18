@@ -1884,7 +1884,7 @@ button {
 }
 
 .production-bg-1 {
-    background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-sand) 100%);
+    background: url('../images/about_us.jpg') center/cover no-repeat;
 }
 
 .production-bg-2 {
